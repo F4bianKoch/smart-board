@@ -1,2 +1,2 @@
-# smart-mirror
+# smart-board
 coming soon!
