@@ -1,0 +1,16 @@
+body,
+html,
+main {
+  margin: 0;
+  height: 100%;
+  background-color: black;
+  font-family: "Montserrat", "Arial";
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+  margin: 0;
+}
