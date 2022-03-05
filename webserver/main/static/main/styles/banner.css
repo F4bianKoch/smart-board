@@ -3,10 +3,11 @@
   color: #000000;
   height: 220px;
   font-size: 50px;
+  z-index: 1;
 }
 
 .square {
-  background-color: #aad8d3;
+  background-image: linear-gradient(45deg, #FDFC47, #24FE41);
   height: 100%;
   border-radius: 15px;
   animation: slide-in-from-left 1000ms ease-out 0ms 1;
