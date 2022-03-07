@@ -29,32 +29,32 @@
 }
 
 .one {
-  animation: fade-in 1000ms ease-out 1300ms 1;
-  animation-fill-mode: forwards;
-}
-
-.two {
   animation: fade-in 1000ms ease-out 1400ms 1;
   animation-fill-mode: forwards;
 }
 
-.three {
+.two {
   animation: fade-in 1000ms ease-out 1500ms 1;
   animation-fill-mode: forwards;
 }
 
+.three {
+  animation: fade-in 1000ms ease-out 1000ms 1;
+  animation-fill-mode: forwards;
+}
+
 .four {
-  animation: fade-in 1000ms ease-out 1200ms 1;
+  animation: fade-in 1000ms ease-out 1300ms 1;
   animation-fill-mode: forwards;
 }
 
 .five {
-  animation: fade-in 1000ms ease-out 1100ms 1;
+  animation: fade-in 1000ms ease-out 1200ms 1;
   animation-fill-mode: forwards;
 }
 
 .six {
-  animation: fade-in 1000ms ease-out 1000ms 1;
+  animation: fade-in 1000ms ease-out 1100ms 1;
   animation-fill-mode: forwards;
 }
 
