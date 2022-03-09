@@ -5,9 +5,9 @@ from django.http import HttpResponse
 # Create your views here
 
 
-def screensaver(response):
-    return render(response, 'main/screensaver.html', {})
+def screensaver(request):
+    return render(request, 'screensaver.html', context={'time': '16:30'})
 
 
-def home(response):
-    return render(response, 'main/home.html')
+def home(request):
+    return render(request, 'home.html')
