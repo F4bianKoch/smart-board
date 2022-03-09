@@ -16,3 +16,6 @@ class TimeConsumer(WebsocketConsumer):
             if current_time != old_time:
                 self.send(json.dumps({'time': str(current_time)}))
             old_time = current_time
+
+    def disconnect(self, close_code):
+        print('websocket disconntected')
