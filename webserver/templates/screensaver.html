@@ -15,8 +15,8 @@
   <body>
     <a href="/home.html">
       <div class="quick-access">
-        <p class="time" id="time">{{ time }}</p>
-        <p class="date">Mo 01.01.2022</p>
+        <p class="time">{{ time }}</p>
+        <p class="date">{{ date }}</p>
       </div>
     </a>
 
@@ -27,7 +27,8 @@
     socket.onmessage = function (e) {
         var djangoData = JSON.parse(e.data);
 
-        document.querySelector('#time').innerText = djangoData.time;
+        document.querySelector('.time').innerText = djangoData.time;
+        document.querySelector('.date').innerText = djangoData.date;
     }
   </script>
 </html>

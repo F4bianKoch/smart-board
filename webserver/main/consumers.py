@@ -20,8 +20,13 @@ class TimeConsumer(WebsocketConsumer):
         while True:
             time_query = datetime.now(pytz.timezone('Europe/Berlin'))
             current_time = time_query.strftime('%H:%M')
+            day = time_query.strftime('%a')
+            current_date = time_query.strftime(f'{day[0:2]} %d.%m.%Y')
             if current_time != old_time:
-                self.send(json.dumps({'time': str(current_time)}))
+                self.send(json.dumps({
+                    'time': str(current_time),
+                    'date': str(current_date),
+                    }))
             old_time = current_time
             if self.stop:
                 break
