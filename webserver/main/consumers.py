@@ -10,12 +10,15 @@ class TimeConsumer(WebsocketConsumer):
         self.accept()
         old_time = 0
 
-        while True:
-            time_query = datetime.now(pytz.timezone('Europe/Berlin'))
-            current_time = time_query.strftime('%H:%M')
-            if current_time != old_time:
-                self.send(json.dumps({'time': str(current_time)}))
-            old_time = current_time
+        try:
+            while True:
+                time_query = datetime.now(pytz.timezone('Europe/Berlin'))
+                current_time = time_query.strftime('%H:%M')
+                if current_time != old_time:
+                    self.send(json.dumps({'time': str(current_time)}))
+                old_time = current_time
+        except Exception as e:
+            print(e)
 
     def disconnect(self, close_code):
         print('websocket disconntected')

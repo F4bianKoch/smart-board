@@ -22,7 +22,7 @@
 
   </body>
   <script>
-    var socket = new WebSocket('ws://192.168.178.122:8000/ws/time/');
+    var socket = new WebSocket('ws://localhost:8000/ws/time/');
 
     socket.onmessage = function (e) {
         var djangoData = JSON.parse(e.data);
