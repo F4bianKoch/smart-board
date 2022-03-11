@@ -8,7 +8,7 @@ from .variables.greeting_messages import greeting_messages
 
 
 def screensaver(request):
-    return render(request, 'screensaver.html', context={'time': '16:30'})
+    return render(request, 'screensaver.html', context={'time': 'N/A', 'date': 'N/A'})
 
 
 def home(request):
