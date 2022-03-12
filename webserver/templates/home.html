@@ -65,9 +65,9 @@
     socket.onmessage = function (e) {
         var djangoData = JSON.parse(e.data);
 
-        document.querySelector('.temperature').innerText = djangoData.temperature;
-        document.querySelector('.icon').innerText = djangoData.icon;
-        document.querySelector('.humidity').innerText = djangoData.humidity;
+        document.querySelector('.temperature').innerText = djangoData.temperature + ' °C';
+        document.querySelector('.icon').src = djangoData.icon;
+        document.querySelector('.humidity').innerText = djangoData.humidity + ' %';
     }
   </script>
 
