@@ -32,7 +32,7 @@ class TimeConsumer(WebsocketConsumer):
             if self.stop:
                 break
 
-    def disconnect(self):
+    def disconnect(self, code):
         self.stop = True
         del self.thread
         print('websocket disconntected')
@@ -55,7 +55,7 @@ class WeatherConsumer(WebsocketConsumer):
             if self.stop:
                 break
 
-    def disconnect(self, event):
+    def disconnect(self, code):
         self.stop = True
         del self.thread
         print('websocket disconntected')
