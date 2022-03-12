@@ -2,6 +2,7 @@
   border: 3px solid white;
   border-radius: 8px;
   background-color: black;
+  color: white;
   opacity: 0;
   transition: transform 190ms ease-in-out;
 }

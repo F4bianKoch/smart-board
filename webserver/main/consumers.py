@@ -5,7 +5,7 @@ import pytz
 import threading
 
 from channels.generic.websocket import WebsocketConsumer
-
+from .widgets.time_feature import current_time
 
 class TimeConsumer(WebsocketConsumer):
     def connect(self):
@@ -35,3 +35,30 @@ class TimeConsumer(WebsocketConsumer):
         self.stop = True
         del self.thread
         print('websocket disconntected')
+
+class TimeWidgetConsumer(WebsocketConsumer):
+
+    def connect(self):
+        self.accept()
+        self.stop = False
+
+        self.thread = threading.Thread(target=self.get_time)
+        self.thread.start()
+
+    def get_time(self):
+        old_time = 0
+        while True:
+            cur_time = current_time()
+            if cur_time != old_time:
+                self.send(json.dumps({
+                    'time': str(cur_time),
+                    }))
+            old_time = cur_time
+            if self.stop:
+                break
+
+    def disconnect(self, close_code):
+        self.stop = True
+        del self.thread
+        print('websocket disconntected')
+
