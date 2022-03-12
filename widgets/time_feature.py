@@ -36,9 +36,9 @@ def stop_watch(status):
         print(countdown, end="\r")
  
         # Delays the program one second
-        time.sleep(1)
+        time.sleep(0.1)
  
-        total_seconds += 1
+        total_seconds += 0.1
 
 m = 0
 s = 2
