@@ -1,4 +1,3 @@
-import imp
 import json
 from datetime import datetime
 import pytz
@@ -7,6 +6,7 @@ import threading
 from channels.generic.websocket import WebsocketConsumer
 
 from .widgets.wetter_widget import WeatherWidget
+
 
 class TimeConsumer(WebsocketConsumer):
     def connect(self):
@@ -27,7 +27,7 @@ class TimeConsumer(WebsocketConsumer):
                 self.send(json.dumps({
                     'time': str(current_time),
                     'date': str(current_date),
-                    }))
+                }))
             old_time = current_time
             if self.stop:
                 break
@@ -46,16 +46,16 @@ class WeatherConsumer(WebsocketConsumer):
         self.thread.start()
 
     def get_weather(self):
-        weather_widget = WeatherWidget(api_key='c8d18229a04d465c872161719221203')
+        weather_widget = WeatherWidget(
+            api_key='c8d18229a04d465c872161719221203')
         while True:
             weather_json = weather_widget.api_request()
             weather = weather_widget.format_request_small(weather_json)
-            print(json.dumps(weather))
             self.send(json.dumps(weather))
             if self.stop:
                 break
 
-    def disconnect(self):
+    def disconnect(self, event):
         self.stop = True
         del self.thread
         print('websocket disconntected')
