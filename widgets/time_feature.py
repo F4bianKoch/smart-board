@@ -1,8 +1,9 @@
 import datetime
 import time
+import pytz
 
 def current_time():
-    now = datetime.datetime.now()  #current time
+    now = datetime.now(pytz.timezone('Europe/Berlin'))  #current time
     time = now.strftime("%H:%M")
     return time
 

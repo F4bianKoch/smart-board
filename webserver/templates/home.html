@@ -47,5 +47,15 @@
 
     </div>
   </main>
+  <script>
+    var socket = new WebSocket('ws://localhost:8000/ws/time/');
+
+    socket.onmessage = function (e) {
+        var djangoData = JSON.parse(e.data);
+
+        document.querySelector('.time').innerText = djangoData.time;
+        document.querySelector('.date').innerText = djangoData.date;
+    }
+  </script>
 </body>
 </html>

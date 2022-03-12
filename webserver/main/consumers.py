@@ -36,7 +36,8 @@ class TimeConsumer(WebsocketConsumer):
         del self.thread
         print('websocket disconntected')
 
-class TimeDisplay(WebsocketConsumer):
+class TimeWidgetConsumer(WebsocketConsumer):
+
     def connect(self):
         self.accept()
         self.stop = False
@@ -55,6 +56,12 @@ class TimeDisplay(WebsocketConsumer):
             old_time = current_time
             if self.stop:
                 break
+    
+    def start_timer(self, m, s):
+        pass
+
+    def start_stop_watch(self):
+        pass
 
     def disconnect(self, close_code):
         self.stop = True
