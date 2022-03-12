@@ -6,6 +6,7 @@ import threading
 
 from channels.generic.websocket import WebsocketConsumer
 
+from .widgets.wetter_widget import WeatherWidget
 
 class TimeConsumer(WebsocketConsumer):
     def connect(self):
@@ -31,7 +32,29 @@ class TimeConsumer(WebsocketConsumer):
             if self.stop:
                 break
 
-    def disconnect(self, close_code):
+    def disconnect(self):
+        self.stop = True
+        del self.thread
+        print('websocket disconntected')
+
+
+class WeatherConsumer(WebsocketConsumer):
+    def connect(self):
+        self.accept()
+        self.stop = False
+        self.thread = threading.Thread(target=self.get_time)
+        self.thread.start()
+
+    def get_weather(self):
+        weather_widget = WeatherWidget(api_key='c8d18229a04d465c872161719221203')
+        while True:
+            weather_json = weather_widget.api_request()
+            weather = weather_widget.format_request_small(weather_json)
+            self.send(json.dumps(weather))
+            if self.stop:
+                break
+
+    def disconnect(self):
         self.stop = True
         del self.thread
         print('websocket disconntected')
