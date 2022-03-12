@@ -5,7 +5,7 @@ import pytz
 import threading
 
 from channels.generic.websocket import WebsocketConsumer
-from widgets.time_feature import current_time
+from .widgets.time_feature import current_time
 
 class TimeConsumer(WebsocketConsumer):
     def connect(self):
@@ -48,20 +48,14 @@ class TimeWidgetConsumer(WebsocketConsumer):
     def get_time(self):
         old_time = 0
         while True:
-            current_time = current_time()
-            if current_time != old_time:
+            cur_time = current_time()
+            if cur_time != old_time:
                 self.send(json.dumps({
-                    'time': str(current_time),
+                    'time': str(cur_time),
                     }))
-            old_time = current_time
+            old_time = cur_time
             if self.stop:
                 break
-    
-    def start_timer(self, m, s):
-        pass
-
-    def start_stop_watch(self):
-        pass
 
     def disconnect(self, close_code):
         self.stop = True
