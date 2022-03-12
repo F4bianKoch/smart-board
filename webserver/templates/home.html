@@ -28,6 +28,9 @@
     <div class="widgets-grid">
 
       <div class="widget one">
+        <p class="temperature"></p>
+        <img class="icon">
+        <p class="humidity"></p>
       </div>
       
       <div class="widget two">
@@ -47,5 +50,26 @@
 
     </div>
   </main>
+
+  <script>
+    const loc = window.location
+    
+    const protocol = 'ws://'
+    if (loc.protocol == 'https'){
+      const protocol = 'wss://'
+    }
+
+    const connection = protocol + loc.host + '/ws/weather/';
+    var socket = new WebSocket(connection);
+
+    socket.onmessage = function (e) {
+        var djangoData = JSON.parse(e.data);
+
+        document.querySelector('.temperature').innerText = djangoData.temperature;
+        document.querySelector('.icon').innerText = djangoData.icon;
+        document.querySelector('.humidity').innerText = djangoData.humidity;
+    }
+  </script>
+
 </body>
 </html>

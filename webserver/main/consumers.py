@@ -42,7 +42,7 @@ class WeatherConsumer(WebsocketConsumer):
     def connect(self):
         self.accept()
         self.stop = False
-        self.thread = threading.Thread(target=self.get_time)
+        self.thread = threading.Thread(target=self.get_weather)
         self.thread.start()
 
     def get_weather(self):
@@ -50,6 +50,7 @@ class WeatherConsumer(WebsocketConsumer):
         while True:
             weather_json = weather_widget.api_request()
             weather = weather_widget.format_request_small(weather_json)
+            print(json.dumps(weather))
             self.send(json.dumps(weather))
             if self.stop:
                 break
