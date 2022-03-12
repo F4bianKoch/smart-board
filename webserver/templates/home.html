@@ -31,6 +31,7 @@
       </div>
       
       <div class="widget two">
+        <p class="time"></p>
       </div>
 
       <div class="widget three">
@@ -48,13 +49,20 @@
     </div>
   </main>
   <script>
-    var socket = new WebSocket('ws://localhost:8000/ws/time/');
+    const loc = window.location
+    
+    const protocol = 'ws://'
+    if (loc.protocol == 'https'){
+      const protocol = 'wss://'
+    }
+
+    const connection = protocol + loc.host + '/ws/timeWidget/';
+    var socket = new WebSocket(connection);
 
     socket.onmessage = function (e) {
         var djangoData = JSON.parse(e.data);
 
         document.querySelector('.time').innerText = djangoData.time;
-        document.querySelector('.date').innerText = djangoData.date;
     }
   </script>
 </body>
