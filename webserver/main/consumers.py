@@ -2,6 +2,7 @@ import json
 from datetime import datetime
 import pytz
 import threading
+import time
 
 from channels.generic.websocket import WebsocketConsumer
 
@@ -55,6 +56,7 @@ class WeatherWidgetConsumer(WebsocketConsumer):
             self.send(json.dumps(weather))
             if self.stop:
                 break
+            time.sleep(1200)
 
     def disconnect(self, code):
         self.stop = True

@@ -61,17 +61,21 @@
 
     const weather_connection = protocol + loc.host + '/ws/weather/';
     const time_connection = protocol +  loc.host + '/ws/timeWidget/';
-    var socket = new WebSocket(weather_connection);
-    var socket = new WebSocket(time_connection);
+    var weather_socket = new WebSocket(weather_connection);
+    var time_socket = new WebSocket(time_connection);
 
-    socket.onmessage = function (e) {
-        var djangoData = JSON.parse(e.data);
+    time_socket.onmessage = function (e) {
+        var django_time_data = JSON.parse(e.data);
 
-        document.querySelector('.time').innerText = djangoData.time;
+        document.querySelector('.time').innerText = django_time_data.time;
+    }
 
-        document.querySelector('.temperature').innerText = djangoData.temperature + ' °C';
-        document.querySelector('.icon').src = djangoData.icon;
-        document.querySelector('.humidity').innerText = djangoData.humidity + ' %';
+    weather_socket.onmessage = function (e) {
+        var django_weather_data = JSON.parse(e.data);
+
+        document.querySelector('.temperature').innerText = django_weather_data.temperature + ' °C';
+        document.querySelector('.icon').src = django_weather_data.icon;
+        document.querySelector('.humidity').innerText = django_weather_data.humidity + ' %';
     }
   </script>
 </body>
