@@ -7,6 +7,7 @@ name = "pypi"
 django = "*"
 channels = "*"
 pytz = "*"
+requests = "*"
 
 [dev-packages]
 autopep8 = "*"

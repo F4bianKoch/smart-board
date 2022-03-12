@@ -1,11 +1,13 @@
-import imp
 import json
 from datetime import datetime
 import pytz
 import threading
 
 from channels.generic.websocket import WebsocketConsumer
+
 from .widgets.time_feature import current_time
+from .widgets.wetter_widget import WeatherWidget
+
 
 class TimeConsumer(WebsocketConsumer):
     def connect(self):
@@ -26,15 +28,39 @@ class TimeConsumer(WebsocketConsumer):
                 self.send(json.dumps({
                     'time': str(current_time),
                     'date': str(current_date),
-                    }))
+                }))
             old_time = current_time
             if self.stop:
                 break
 
-    def disconnect(self, close_code):
+    def disconnect(self, code):
         self.stop = True
         del self.thread
         print('websocket disconntected')
+
+
+class WeatherWidgetConsumer(WebsocketConsumer):
+    def connect(self):
+        self.accept()
+        self.stop = False
+        self.thread = threading.Thread(target=self.get_weather)
+        self.thread.start()
+
+    def get_weather(self):
+        weather_widget = WeatherWidget(
+            api_key='c8d18229a04d465c872161719221203')
+        while True:
+            weather_json = weather_widget.api_request()
+            weather = weather_widget.format_request_small(weather_json)
+            self.send(json.dumps(weather))
+            if self.stop:
+                break
+
+    def disconnect(self, code):
+        self.stop = True
+        del self.thread
+        print('websocket disconntected')
+
 
 class TimeWidgetConsumer(WebsocketConsumer):
 
@@ -52,7 +78,7 @@ class TimeWidgetConsumer(WebsocketConsumer):
             if cur_time != old_time:
                 self.send(json.dumps({
                     'time': str(cur_time),
-                    }))
+                }))
             old_time = cur_time
             if self.stop:
                 break
@@ -61,4 +87,3 @@ class TimeWidgetConsumer(WebsocketConsumer):
         self.stop = True
         del self.thread
         print('websocket disconntected')
-

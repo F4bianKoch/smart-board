@@ -28,6 +28,9 @@
     <div class="widgets-grid">
 
       <div class="widget one">
+        <p class="temperature"></p>
+        <img class="icon">
+        <p class="humidity"></p>
       </div>
       
       <div class="widget two">
@@ -56,13 +59,19 @@
       const protocol = 'wss://'
     }
 
-    const connection = protocol + loc.host + '/ws/timeWidget/';
-    var socket = new WebSocket(connection);
+    const weather_connection = protocol + loc.host + '/ws/weather/';
+    const time_connection = protocol +  loc.host + '/ws/timeWidget/';
+    var socket = new WebSocket(weather_connection);
+    var socket = new WebSocket(time_connection);
 
     socket.onmessage = function (e) {
         var djangoData = JSON.parse(e.data);
 
         document.querySelector('.time').innerText = djangoData.time;
+
+        document.querySelector('.temperature').innerText = djangoData.temperature + ' °C';
+        document.querySelector('.icon').src = djangoData.icon;
+        document.querySelector('.humidity').innerText = djangoData.humidity + ' %';
     }
   </script>
 </body>
