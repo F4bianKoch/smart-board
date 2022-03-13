@@ -1,9 +1,7 @@
 import imp
 from django.urls import path
 
-from .consumers import TimeConsumer
-from .consumers import TimeWidgetConsumer
-from .consumers import TimeConsumer, WeatherWidgetConsumer
+from .consumers import TimeConsumer, WeatherWidgetConsumer, TimeWidgetConsumer
 
 
 ws_urlpatterns = [
