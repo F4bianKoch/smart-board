@@ -60,10 +60,10 @@
       const protocol = 'wss://';
     }
 
-    const weather_connection = protocol + loc.host + '/ws/weather/';
     const time_connection = protocol +  loc.host + '/ws/timeWidget/';
-    var weather_socket = new WebSocket(weather_connection);
     var time_socket = new WebSocket(time_connection);
+    const weather_connection = protocol + loc.host + '/ws/weather/';
+    var weather_socket = new WebSocket(weather_connection);
 
     time_socket.onmessage = function (e) {
         var django_time_data = JSON.parse(e.data);
