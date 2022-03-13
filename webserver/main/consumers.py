@@ -15,8 +15,8 @@ class TimeConsumer(WebsocketConsumer):
         self.accept()
         self.stop = False
 
-        self.thread = threading.Thread(target=self.get_time)
-        self.thread.start()
+        self.thread_time_display = threading.Thread(target=self.get_time)
+        self.thread_time_display.start()
 
     def get_time(self):
         old_time = 0
@@ -36,7 +36,7 @@ class TimeConsumer(WebsocketConsumer):
 
     def disconnect(self, code):
         self.stop = True
-        del self.thread
+        del self.thread_time_display
         print('websocket disconntected')
 
 
@@ -48,9 +48,9 @@ class WeatherWidgetConsumer(WebsocketConsumer):
         api_key = settings["weather_widget"]["api_key"]
         location = settings["weather_widget"]["location"]
         self.stop = False
-        self.thread = threading.Thread(
+        self.thread_weather_widget = threading.Thread(
             target=self.get_weather(api_key, location))
-        self.thread.start()
+        self.thread_weather_widget.start()
 
     def get_weather(self, api_key, location):
         weather_widget = WeatherWidget(
@@ -65,18 +65,19 @@ class WeatherWidgetConsumer(WebsocketConsumer):
 
     def disconnect(self, code):
         self.stop = True
-        del self.thread
+        del self.thread_weather_widget
         print('websocket disconntected')
 
 
 class TimeWidgetConsumer(WebsocketConsumer):
 
     def connect(self):
+        print('connected')
         self.accept()
         self.stop = False
 
-        self.thread = threading.Thread(target=self.get_time)
-        self.thread.start()
+        self.thread_time_widget = threading.Thread(target=self.get_time)
+        self.thread_time_widget.start()
 
     def get_time(self):
         old_time = 0
@@ -90,7 +91,7 @@ class TimeWidgetConsumer(WebsocketConsumer):
             if self.stop:
                 break
 
-    def disconnect(self, close_code):
+    def disconnect(self, code):
         self.stop = True
-        del self.thread
+        del self.thread_time_widget
         print('websocket disconntected')
