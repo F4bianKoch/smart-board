@@ -1,7 +1,16 @@
 #!/usr/bin/env python
 """Django's command-line utility for administrative tasks."""
 import os
+from shutil import ExecError
 import sys
+
+from utils import search_for_settings
+
+
+class SettingsNotFoundError(Exception):
+    ''' This Error is getting raised if webserver/main/settings.json is not found'''
+
+    pass
 
 
 def main():
@@ -15,7 +24,10 @@ def main():
             "available on your PYTHONPATH environment variable? Did you "
             "forget to activate a virtual environment?"
         ) from exc
-    execute_from_command_line(sys.argv)
+    if search_for_settings():
+        execute_from_command_line(sys.argv)
+    else:
+        raise SettingsNotFoundError('webserver/main/setting.json file was not found')
 
 
 if __name__ == '__main__':
