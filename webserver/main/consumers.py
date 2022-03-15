@@ -43,10 +43,10 @@ class TimeConsumer(WebsocketConsumer):
 class WeatherWidgetConsumer(WebsocketConsumer):
     def connect(self):
         self.accept()
-        f = open('main/settings.json')
-        settings = json.load(f)
-        api_key = settings["weather_widget"]["api_key"]
-        location = settings["weather_widget"]["location"]
+        f = open('main/config.json')
+        config = json.load(f)
+        api_key = config["weather_widget"]["api_key"]
+        location = config["weather_widget"]["location"]
         self.stop = False
         weather_widget = WeatherWidget(
             api_key=api_key, location=location)

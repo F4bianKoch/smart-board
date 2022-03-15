@@ -7,11 +7,10 @@ class SettingsFileNotAvailable(Exception):
     pass
 
 
-def search_for_settings():
+def search_for_config():
     ''' Tries to find settings.json file '''
     try:
-        f = open('main/settings.json')
-        settings_json = json.load(f)
+        f = open('main/config.json')
         return True
     except FileNotFoundError:
         return False
