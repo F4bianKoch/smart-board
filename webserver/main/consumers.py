@@ -48,13 +48,13 @@ class WeatherWidgetConsumer(WebsocketConsumer):
         api_key = settings["weather_widget"]["api_key"]
         location = settings["weather_widget"]["location"]
         self.stop = False
-        self.thread_weather_widget = threading.Thread(
-            target=self.get_weather(api_key, location))
-        self.thread_weather_widget.start()
-
-    def get_weather(self, api_key, location):
         weather_widget = WeatherWidget(
             api_key=api_key, location=location)
+        self.thread_weather_widget = threading.Thread(
+            target=self.get_weather, args=[weather_widget])
+        self.thread_weather_widget.start()
+
+    def get_weather(self, weather_widget):
         while True:
             weather_json = weather_widget.api_request()
             weather = weather_widget.format_request_small(weather_json)
