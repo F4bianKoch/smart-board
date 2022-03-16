@@ -5,6 +5,7 @@
   background-color: black;
   color: white;
   opacity: 0;
+  overflow: hidden;
   transition: transform 190ms ease-in-out;
 }
 
@@ -15,6 +16,7 @@
   padding-right: 35px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-rows: 1fr;
   column-gap: 10px;
   row-gap: 10px;
   position: absolute;
