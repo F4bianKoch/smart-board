@@ -6,11 +6,10 @@
   color: white;
   opacity: 0;
   overflow: hidden;
-  transition: transform 190ms ease-in-out;
 }
 
 .widgets-grid {
-  padding-top: 240px;
+  margin-top: 240px;
   padding-bottom: 22px;
   padding-left: 35px;
   padding-right: 35px;
