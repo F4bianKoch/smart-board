@@ -30,6 +30,7 @@
       <div class="widget one">
         <p class="temperature"></p>
         <img class="icon">
+        <p class="text"></p>
         <p class="humidity"></p>
         <p class="location"></p>
       </div>
@@ -76,6 +77,7 @@
 
         document.querySelector('.temperature').innerText = django_weather_data.temperature + ' °C';
         document.querySelector('.icon').src = django_weather_data.icon;
+        document.querySelector('.text').innerText = django_weather_data.text;
         document.querySelector('.humidity').innerText = django_weather_data.humidity + ' %';
         document.querySelector('.location').innerText = django_weather_data.location;
     }

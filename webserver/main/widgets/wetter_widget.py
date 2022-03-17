@@ -15,6 +15,7 @@ class WeatherWidget:
     def format_request_small(self, weather_json):
         current_temperature = weather_json['current']['temp_c']
         weather_icon_link = weather_json['current']['condition']['icon']
+        text = weather_json['current']['condition']['text']
         humidity = weather_json['current']['humidity']
         location = weather_json['location']['name'] + \
             ', ' + weather_json['location']['region']
@@ -22,6 +23,7 @@ class WeatherWidget:
         current_weather = {
             'temperature': current_temperature,
             'icon': weather_icon_link,
+            'text': text,
             'humidity': humidity,
             'location': location
         }
