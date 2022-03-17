@@ -8,7 +8,7 @@ class WeatherWidget:
 
     def api_request(self):
         weather_json = get(
-            f'''https://api.weatherapi.com/v1/current.json?key={self.__api_key}&q={self.location}''')
+            f'''https://api.weatherapi.com/v1/current.json?key={self.__api_key}&lang=de&q={self.location}''')
         weather_json = weather_json.json()
         return weather_json
 
