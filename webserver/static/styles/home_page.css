@@ -40,6 +40,7 @@
 .two {
   animation: fade-in 1000ms ease-out 1500ms 1;
   animation-fill-mode: forwards;
+  font-size: 100px;
 }
 
 .three {
