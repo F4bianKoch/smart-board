@@ -29,7 +29,7 @@
         {{ msg }} 
       </p>
       {% load static %}
-      <a href="/screensaver.html" class="arrow-icon"><img src="{% static 'icons/down-arrow.png' %}"></a>
+      <a href="/screensaver" class="arrow-icon"><img src="{% static 'icons/down-arrow.png' %}"></a>
       </div>
 
     </div>
@@ -94,7 +94,7 @@
   <script>
     (function() {
   var idleDurationSecs = 60;
-  var redirectUrl = '/screensaver.html';  // Redirect idle users to this URL
+  var redirectUrl = '/screensaver';  // Redirect idle users to this URL
   var idleTimeout;
 
   var resetIdleTimeout = function() {
