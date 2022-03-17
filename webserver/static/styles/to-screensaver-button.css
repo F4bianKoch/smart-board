@@ -37,21 +37,25 @@
        
    } 
    25% {
-       padding: 2px;
+       padding: 3px;
        top: 15px;
    }
    50% {
-       padding: 0;
+       border-top-left-radius: 50%;
+       border-top-right-radius: 50%;
+       padding: 3px;
        top: 4px;
    }
    75% {
-       padding: 0;
+       border-top-left-radius: 50%;
+       border-top-right-radius: 50%;
+       padding: 3px;
        top: 10px;
    }
    100% {
        border-top-left-radius: 50%;
        border-top-right-radius: 50%;
-       padding: 0;
+       padding: 3px;
        top: 4px;
    }
 }
