@@ -6,6 +6,7 @@
   color: white;
   opacity: 0;
   overflow: hidden;
+  transition: transform 190ms ease-in-out;
 }
 
 .widgets-grid {
