@@ -29,7 +29,10 @@
         {{ msg }} 
       </p>
       {% load static %}
-      <a href="/screensaver" class="arrow-icon"><img src="{% static 'icons/down-arrow.png' %}"></a>
+      <a href="/screensaver" class="arrow-icon">
+        <div class="arrow-icon-hover-box"></div>
+        <img class="arrow-icon-img" src="{% static 'icons/down-arrow.png' %}">
+      </a>
       </div>
 
     </div>
