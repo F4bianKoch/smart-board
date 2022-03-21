@@ -1,119 +1,34 @@
 <!DOCTYPE html>
-<html lang="en" class="animated slideInUp">
-<head>
-  <title>Document</title>
-  {% load static %}
-  <link rel="stylesheet" href="{% static 'styles/to-screensaver-button.css' %}">
-  {% load static %}
-  <link rel="stylesheet" href="{% static 'styles/home_page.css' %}">
-  {% load static %}
-  <link rel="stylesheet" href="{% static 'styles/banner.css' %}">
-  {% load static %}
-  <link rel="stylesheet" href="{% static 'styles/settings_icon.css' %}">
-  {% load static %}
-  <link rel="stylesheet" href="{% static 'styles/general.css' %}">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
-</head>
-<body>
-  <main>
-    <div class="banner">
+<html lang="en">
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="/webserver/static/styles/general.css">
+    <link rel="stylesheet" href="/webserver/static/styles/home_page.css">
+    <title>SMART BOARD</title>
+  </head>
+  <body>
 
-      <div class="square">
+    <main>
+
+      <div class="sidebar">
+        <a href="" class="home">
+          <span class="material-icons-outlined">home</span>
+        </a>
+        <a href="" class="settings">
+          <span class="material-icons">tune</span>
+        </a>
+        <a href="" class="customize">
+          <span class="material-icons">dashboard_customize</span>
+        </a>
       </div>
 
-      {% load static %}
-      <a class="settings-icon"><img src="{% static 'icons/setting.png' %}"></a>
-      <p class="greeting-message">
-        {{ msg }} 
-      </p>
-      {% load static %}
-      <a href="/screensaver" class="arrow-icon">
-        <div class="arrow-icon-hover-box"></div>
-        <img class="arrow-icon-img" src="{% static 'icons/down-arrow.png' %}">
-      </a>
-      </div>
-
+    <div class="widget-grid">
+      <div class="widget 1"></div>
+      <div class="widget 2"></div>
+      <div class="widget 3"></div>
+      <div class="widget 4"></div>
     </div>
 
-    <div class="widgets-grid">
-
-      <div class="widget one">
-        <p class="temperature"></p>
-        <img class="icon">
-        <p class="text"></p>
-        <p class="humidity"></p>
-        <p class="location"></p>
-      </div>
-      
-      <div class="widget two">
-        <p class="time"></p>
-      </div>
-
-      <div class="widget three">
-      </div>
-
-      <div class="widget four">
-      </div>
-      
-      <div class="widget five">
-      </div>
-
-      <div class="widget six">
-      </div>
-
-    </div>
-  </main>
-  <script>
-    const loc = window.location;
-    
-    const protocol = 'ws://';
-    if (loc.protocol == 'https'){
-      const protocol = 'wss://';
-    }
-
-    const time_connection = protocol +  loc.host + '/ws/timeWidget/';
-    var time_socket = new WebSocket(time_connection);
-    const weather_connection = protocol + loc.host + '/ws/weather/';
-    var weather_socket = new WebSocket(weather_connection);
-
-    time_socket.onmessage = function (e) {
-        var django_time_data = JSON.parse(e.data);
-
-        document.querySelector('.time').innerText = django_time_data.time;
-    }
-
-    weather_socket.onmessage = function (e) {
-        var django_weather_data = JSON.parse(e.data);
-
-        document.querySelector('.temperature').innerText = django_weather_data.temperature + ' °C';
-        document.querySelector('.icon').src = django_weather_data.icon;
-        document.querySelector('.text').innerText = django_weather_data.text;
-        document.querySelector('.humidity').innerText = django_weather_data.humidity + ' %';
-        document.querySelector('.location').innerText = django_weather_data.location;
-    }
-  </script>
-  <script>
-    (function() {
-  var idleDurationSecs = 60;
-  var redirectUrl = '/screensaver';  // Redirect idle users to this URL
-  var idleTimeout;
-
-  var resetIdleTimeout = function() {
-    if(idleTimeout) clearTimeout(idleTimeout);
-
-    idleTimeout = setTimeout(function(){
-      location.href = redirectUrl
-    }, idleDurationSecs * 1000);
-  };
-
-  resetIdleTimeout();
-
-  ['click', 'touchstart', 'mousemove'].forEach(evt =>
-    document.addEventListener(evt, resetIdleTimeout, false)
-  );
-})();
-  </script>
-</body>
+    </main>
+  </body>
 </html>

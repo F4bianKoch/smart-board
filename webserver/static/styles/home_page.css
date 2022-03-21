@@ -1,79 +1,51 @@
-.widget {
-  color: white;
-  border: 3px solid white;
-  border-radius: 8px;
-  background-color: black;
-  color: white;
-  opacity: 0;
-  overflow: hidden;
-  transition: transform 190ms ease-in-out;
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
 }
 
-.widgets-grid {
-  margin-top: 240px;
-  padding-bottom: 22px;
-  padding-left: 35px;
-  padding-right: 35px;
+.sidebar {
+  color: var(--color);
+  padding-left: 2rem;
+  padding-right: 2rem;
+  height: inherit;
+  width: 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content:space-evenly;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background-color: var(--dark-background);
+  z-index: 1;
+}
+
+main {
+  background-color: var(--dark-main-color);
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.widget-grid {
+  width: 100%;
+  padding: 2rem;
+  padding-top: 4rem;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-auto-rows: 1fr;
-  column-gap: 10px;
-  row-gap: 10px;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
+  row-gap: 20px;
+  overflow: hidden;
+}
+
+.widget {
+  background-color: var(--dark-background);
+  border-radius: 25px;
+  height: auto;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  transition: box-shadow 200ms;
 }
 
 .widget:hover {
-  z-index: 1;
-  transform: scale(1.1);
-}
-
-.one {
-  animation: fade-in 1000ms ease-out 1400ms 1;
-  animation-fill-mode: forwards;
-}
-
-.two {
-  animation: fade-in 1000ms ease-out 1500ms 1;
-  animation-fill-mode: forwards;
-  font-size: 100px;
-}
-
-.three {
-  animation: fade-in 1000ms ease-out 1000ms 1;
-  animation-fill-mode: forwards;
-}
-
-.four {
-  animation: fade-in 1000ms ease-out 1300ms 1;
-  animation-fill-mode: forwards;
-}
-
-.five {
-  animation: fade-in 1000ms ease-out 1200ms 1;
-  animation-fill-mode: forwards;
-}
-
-.six {
-  animation: fade-in 1000ms ease-out 1100ms 1;
-  animation-fill-mode: forwards;
-}
-
-
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@media (max-width: 1050px) {
-  .widgets-grid {
-    grid-template-columns: 1fr 1fr;
-  }
+  box-shadow: none;
 }

@@ -1,16 +1,13 @@
-body,
-html,
-main {
+:root {
+  --color: white;
+  --dark-background: #222831;
+  --dark-main-color: #393E46;
+  --link-color: #00FFF5;
+  --shadow-color: rgba(29, 30, 36, 0.726);
+}
+
+body, html {
   margin: 0;
+  padding: 0;
   height: 100%;
-  background-color: black;
-  font-family: "Montserrat", "Arial";
-}
-
-a {
-  text-decoration: none;
-}
-
-p {
-  margin: 0;
 }
