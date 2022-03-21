@@ -2,6 +2,9 @@
 <html lang="en">
   <head>
     <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Poppins:wght@100;300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/webserver/static/styles/general.css">
     <link rel="stylesheet" href="/webserver/static/styles/home_page.css">
     <title>SMART BOARD</title>
@@ -22,13 +25,41 @@
         </a>
       </div>
 
-    <div class="widget-grid">
-      <div class="widget 1"></div>
-      <div class="widget 2"></div>
-      <div class="widget 3"></div>
-      <div class="widget 4"></div>
-    </div>
+      <div class="main-part">
+
+        <div class="header">
+          <h1 class="time">22:50</h1>
+
+          <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="checkbox">
+              <input type="checkbox" id="checkbox" />
+              <div class="slider round"></div>
+            </label>
+          </div>
+        </div>
+
+        <div class="widget-grid">
+          <div class="widget 1"></div>
+          <div class="widget 2"></div>
+          <div class="widget 3"></div>
+          <div class="widget 4"></div>
+        </div>
+      </div>
 
     </main>
+    <script>
+      const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+
+      function switchTheme(e) {
+          if (e.target.checked) {
+              document.documentElement.setAttribute('data-theme', 'dark');
+          }
+          else {
+              document.documentElement.setAttribute('data-theme', 'light');
+          }    
+      }
+
+      toggleSwitch.addEventListener('change', switchTheme, false);
+    </script>
   </body>
 </html>

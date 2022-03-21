@@ -1,13 +1,22 @@
 :root {
   --color: white;
-  --dark-background: #222831;
-  --dark-main-color: #393E46;
+  --background: #222831;
+  --main-color: #393E46;
   --link-color: #00FFF5;
   --shadow-color: rgba(29, 30, 36, 0.726);
+}
+
+[data-theme="dark"] {
+    --color: black;
+    --background: rgb(223, 240, 255);
+    --main-color: white;
+    --link-color: #00ADB5;
+    --shadow-color: rgba(29, 30, 36, 0.726);
 }
 
 body, html {
   margin: 0;
   padding: 0;
   height: 100%;
+  font-family: 'Poppins', sans-serif;
 }
