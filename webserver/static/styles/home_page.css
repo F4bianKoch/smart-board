@@ -20,6 +20,10 @@ a {
   z-index: 1;
 }
 
+.sidebar span {
+  font-size: 36px;
+}
+
 main {
   background-color: var(--main-color);
   height: 100%;
