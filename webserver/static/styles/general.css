@@ -7,7 +7,7 @@
 }
 
 [data-theme="dark"] {
-    --color: black;
+    --color: #0090ff;
     --background: rgb(223, 240, 255);
     --main-color: white;
     --link-color: #0090ff;
