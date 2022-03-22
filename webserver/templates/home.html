@@ -5,8 +5,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Poppins:wght@100;300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/webserver/static/styles/general.css">
-    <link rel="stylesheet" href="/webserver/static/styles/home_page.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/home_page.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/general.css' %}">
     <title>SMART BOARD</title>
   </head>
   <body>
@@ -28,7 +29,7 @@
       <div class="main-part">
 
         <div class="header">
-            <h1 class="time-date">22:50 <small class="date">Mo 11.03.2022</small></h1>
+            <h1 class="time-date">N/A</h1>
 
           <div class="theme-switch-wrapper">
             <label class="theme-switch" for="checkbox">
@@ -47,6 +48,23 @@
       </div>
 
     </main>
+    <script>
+      const loc = window.location
+      
+      const protocol = 'ws://'
+      if (loc.protocol == 'https'){
+        const protocol = 'wss://'
+      }
+
+      const connection = protocol + loc.host + '/ws/time/';
+      var socket = new WebSocket(connection);
+
+      socket.onmessage = function (e) {
+          var djangoData = JSON.parse(e.data);
+
+          document.querySelector('.time-date').innerText = djangoData.time;
+      }
+    </script>
     <script>
       const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
 

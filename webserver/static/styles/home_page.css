@@ -51,7 +51,7 @@ main {
   left: 4rem;
 }
 
-.time-date small {
+.time-date span {
   font-size: 19px;
   padding-left: 0.5rem;
 }

@@ -1,3 +1,18 @@
+body {
+  background-color: var(--background);
+}
+
+a {
+  text-decoration: none;
+  margin: 0;
+}
+
+a p{
+  color: var(--color);
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+}
+
 .quick-access {
   height: 100%;
   display: flex;
