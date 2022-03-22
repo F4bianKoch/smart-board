@@ -83,5 +83,26 @@
 
       toggleSwitch.addEventListener('change', switchTheme, false);
     </script>
+    <script>
+        (function() {
+      var idleDurationSecs = 60;
+      var redirectUrl = '/screensaver';  // Redirect idle users to this URL
+      var idleTimeout;
+
+      var resetIdleTimeout = function() {
+        if(idleTimeout) clearTimeout(idleTimeout);
+
+        idleTimeout = setTimeout(function(){
+          location.href = redirectUrl
+        }, idleDurationSecs * 1000);
+      };
+
+      resetIdleTimeout();
+
+      ['click', 'touchstart', 'mousemove'].forEach(evt =>
+        document.addEventListener(evt, resetIdleTimeout, false)
+      );
+      })();
+    </script>
   </body>
 </html>
