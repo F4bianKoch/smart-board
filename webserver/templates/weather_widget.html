@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html>
   <header>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/weather_widget.css' %}">
     <title>SMART BOARD</title>
   </header>
   <body>
+    <div class="weather">
       <p class="temperature"></p>
       <img class="icon">
       <p class="text"></p>
       <p class="humidity"></p>
       <p class="location"></p>
+    </div>
 
     <script>
       const weather_widget_loc = window.location;
