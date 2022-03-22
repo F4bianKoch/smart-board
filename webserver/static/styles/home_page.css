@@ -47,6 +47,11 @@ main {
   left: 4rem;
 }
 
+.time-date small {
+  font-size: 19px;
+  padding-left: 0.5rem;
+}
+
 .theme-switch-wrapper {
   position: absolute;
   right: 4rem;
@@ -56,10 +61,6 @@ main {
   display: flex;
   align-items: center;
 
-  em {
-    margin-left: 10px;
-    font-size: 1rem;
-  }
 }
 .theme-switch {
   display: inline-block;
