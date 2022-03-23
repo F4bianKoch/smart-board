@@ -1,36 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Poppins:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron&family=Poppins:wght@100;300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
     {% load static %}
-    <link rel="stylesheet" href="{% static 'styles/home_page.css' %}">
-    <link rel="stylesheet" href="{% static 'styles/general.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/home_page.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/general.css' %}" />
     <title>SMART BOARD</title>
   </head>
   <body>
-
     <main>
-
       <div class="sidebar">
         <a href="" class="home">
           <span class="material-icons-outlined">home</span>
         </a>
+        <a href="" class="apps">
+          <span class="material-icons-outlined">widgets</span>
+        </a>
         <a href="" class="settings">
           <span class="material-icons">tune</span>
-        </a>
-        <a href="" class="customize">
-          <span class="material-icons">dashboard_customize</span>
         </a>
       </div>
 
       <div class="main-part">
-
         <div class="header">
-            <p class="time">N/A</p>
-            <p class="date">N/A</p>
+          <p class="time">N/A</p>
+          <p class="date">N/A</p>
 
           <div class="theme-switch-wrapper">
             <label class="theme-switch" for="checkbox">
@@ -41,87 +44,86 @@
         </div>
 
         <div class="widget-grid">
-          <div class="widget 1">
-            {% include "weather_widget.html" %}
-          </div>
+          <div class="widget 1">{% include "weather_widget.html" %}</div>
           <div class="widget 2"></div>
           <div class="widget 3"></div>
           <div class="widget 4"></div>
         </div>
       </div>
-
     </main>
     <script>
-      const loc = window.location
-      
-      const protocol = 'ws://'
-      if (loc.protocol == 'https'){
-        const protocol = 'wss://'
+      const loc = window.location;
+
+      const protocol = "ws://";
+      if (loc.protocol == "https") {
+        const protocol = "wss://";
       }
 
-      const connection = protocol + loc.host + '/ws/time/';
+      const connection = protocol + loc.host + "/ws/time/";
       var socket = new WebSocket(connection);
 
       socket.onmessage = function (e) {
-          var djangoData = JSON.parse(e.data);
+        var djangoData = JSON.parse(e.data);
 
-          document.querySelector('.time').innerText = djangoData.time;
-          document.querySelector('.date').innerText = djangoData.date;
-      }
-    </script>
-    <script>
-      const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
-
-      function switchTheme(e) {
-          if (e.target.checked) {
-              document.documentElement.setAttribute('data-theme', 'dark');
-          }
-          else {
-              document.documentElement.setAttribute('data-theme', 'light');
-          }    
-      }
-
-      toggleSwitch.addEventListener('change', switchTheme, false);
-
-      const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
-      if (currentTheme) {
-          document.documentElement.setAttribute('data-theme', currentTheme);
-
-          if (currentTheme === 'dark') {
-              toggleSwitch.checked = true;
-          }
-      }
-
-      function switchTheme(e) {
-          if (e.target.checked) {
-              document.documentElement.setAttribute('data-theme', 'dark');
-              localStorage.setItem('theme', 'dark'); //add this
-          }
-          else {
-              document.documentElement.setAttribute('data-theme', 'light');
-              localStorage.setItem('theme', 'light'); //add this
-          }    
-      }
-    </script>
-    <script>
-        (function() {
-      var idleDurationSecs = 60;
-      var redirectUrl = '/screensaver';  // Redirect idle users to this URL
-      var idleTimeout;
-
-      var resetIdleTimeout = function() {
-        if(idleTimeout) clearTimeout(idleTimeout);
-
-        idleTimeout = setTimeout(function(){
-          location.href = redirectUrl
-        }, idleDurationSecs * 1000);
+        document.querySelector(".time").innerText = djangoData.time;
+        document.querySelector(".date").innerText = djangoData.date;
       };
-
-      resetIdleTimeout();
-
-      ['click', 'touchstart', 'mousemove'].forEach(evt =>
-        document.addEventListener(evt, resetIdleTimeout, false)
+    </script>
+    <script>
+      const toggleSwitch = document.querySelector(
+        '.theme-switch input[type="checkbox"]'
       );
+
+      function switchTheme(e) {
+        if (e.target.checked) {
+          document.documentElement.setAttribute("data-theme", "dark");
+        } else {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      }
+
+      toggleSwitch.addEventListener("change", switchTheme, false);
+
+      const currentTheme = localStorage.getItem("theme")
+        ? localStorage.getItem("theme")
+        : null;
+      if (currentTheme) {
+        document.documentElement.setAttribute("data-theme", currentTheme);
+
+        if (currentTheme === "dark") {
+          toggleSwitch.checked = true;
+        }
+      }
+
+      function switchTheme(e) {
+        if (e.target.checked) {
+          document.documentElement.setAttribute("data-theme", "dark");
+          localStorage.setItem("theme", "dark"); //add this
+        } else {
+          document.documentElement.setAttribute("data-theme", "light");
+          localStorage.setItem("theme", "light"); //add this
+        }
+      }
+    </script>
+    <script>
+      (function () {
+        var idleDurationSecs = 60;
+        var redirectUrl = "/screensaver"; // Redirect idle users to this URL
+        var idleTimeout;
+
+        var resetIdleTimeout = function () {
+          if (idleTimeout) clearTimeout(idleTimeout);
+
+          idleTimeout = setTimeout(function () {
+            location.href = redirectUrl;
+          }, idleDurationSecs * 1000);
+        };
+
+        resetIdleTimeout();
+
+        ["click", "touchstart", "mousemove"].forEach((evt) =>
+          document.addEventListener(evt, resetIdleTimeout, false)
+        );
       })();
     </script>
   </body>
