@@ -29,7 +29,8 @@
       <div class="main-part">
 
         <div class="header">
-            <h1 class="time-date">N/A</h1>
+            <p class="time">N/A</p>
+            <p class="date">N/A</p>
 
           <div class="theme-switch-wrapper">
             <label class="theme-switch" for="checkbox">
@@ -40,7 +41,9 @@
         </div>
 
         <div class="widget-grid">
-          <div class="widget 1"></div>
+          <div class="widget 1">
+            {% include "weather_widget.html" %}
+          </div>
           <div class="widget 2"></div>
           <div class="widget 3"></div>
           <div class="widget 4"></div>
@@ -62,7 +65,8 @@
       socket.onmessage = function (e) {
           var djangoData = JSON.parse(e.data);
 
-          document.querySelector('.time-date').innerText = djangoData.time;
+          document.querySelector('.time').innerText = djangoData.time;
+          document.querySelector('.date').innerText = djangoData.date;
       }
     </script>
     <script>

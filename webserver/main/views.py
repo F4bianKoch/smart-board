@@ -14,3 +14,7 @@ def screensaver(request):
 def home(request):
     msg = greeting_messages[random.randint(1, len(greeting_messages))]
     return render(request, 'home.html', context={'msg': msg})
+
+
+def weather_widget(request):
+    return render(request, 'weather_widget.html', context={})

@@ -1,0 +1,11 @@
+p {
+    margin: 0;
+    display: inline-block;
+    color: var(--color);
+    font-size: 20px;
+}
+
+.weather {
+    padding: 1.5rem;
+    height: 90%;
+}
