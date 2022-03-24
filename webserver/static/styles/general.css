@@ -19,4 +19,6 @@ body, html {
   padding: 0;
   height: 100%;
   font-family: 'Poppins', sans-serif;
+  background-color: var(--main-color);
+  overflow: hidden;
 }

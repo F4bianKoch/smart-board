@@ -20,10 +20,10 @@
   <body>
     <main>
       <div class="sidebar">
-        <a href="" class="home">
+        <a href="#main-part" class="home">
           <span class="material-icons-outlined">home</span>
         </a>
-        <a href="" class="apps">
+        <a href="#apps" class="apps">
           <span class="material-icons-outlined">widgets</span>
         </a>
         <a href="" class="settings">
@@ -31,7 +31,7 @@
         </a>
       </div>
 
-      <div class="main-part">
+      <div id="main-part">
         <div class="header">
           <p class="time">N/A</p>
           <p class="date">N/A</p>
@@ -53,6 +53,16 @@
         </div>
       </div>
     </main>
+    <div id="apps">
+      <div class="header">
+        <p class="time">N/A</p>
+        <p class="date">N/A</p>
+      </div>
+
+      <div class="apps-grid">
+
+      </div>
+    </div>
     <script>
       const loc = window.location;
 
@@ -67,8 +77,14 @@
       socket.onmessage = function (e) {
         var djangoData = JSON.parse(e.data);
 
-        document.querySelector(".time").innerText = djangoData.time;
-        document.querySelector(".date").innerText = djangoData.date;
+        time_fields = document.querySelectorAll(".time");
+        date_fields = document.querySelectorAll(".date");
+        time_fields.forEach(function(time_fields){
+          time_fields.innerText = djangoData.time;
+        });
+        date_fields.forEach(function(date_fields){
+          date_fields.innerText = djangoData.date;
+        });
       };
     </script>
     <script>
