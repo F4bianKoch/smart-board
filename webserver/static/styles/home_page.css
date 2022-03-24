@@ -8,6 +8,7 @@ a {
   color: var(--color);
   padding-left: 2rem;
   padding-right: 2rem;
+  position: fixed;
   height: inherit;
   width: 40px;
   text-align: center;
@@ -31,15 +32,16 @@ main {
   flex-direction: row;
 }
 
-.main-part {
+#main-part {
   width: 100%;
   display: flex;
+  margin-left: 104px;
   flex-direction: column;
 }
 
 .header {
   width: 100%;
-  height: 4rem;
+  height: 64px;
   position: relative;
 }
 
@@ -59,8 +61,8 @@ main {
   font-size: 25px;
   font-weight: 550;
   position: absolute;
-  left: 13rem;
-  bottom: -0.4rem;
+  left: 12.5rem;
+  top: 0.5rem;
 }
 
 .theme-switch-wrapper {
@@ -144,4 +146,13 @@ input:checked + .slider:before {
 
 .widget:hover {
   box-shadow: none;
+}
+
+#apps {
+  height: 100%;
+  margin-left: 104px;
+}
+
+.apps-grid {
+  height: 100%;
 }
