@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <header>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/todolist.css' %}" />
+    <title>SMART BOARD</title>
+  </header>
+  <body>
+    <div class="todolist">
+        <form>
+            {{form}}
+            <input type="submit" name="Create Task"
+        </form>
+        {% for ToDoList in tasks %}
+            <div><p>{{ToDoList}}</p></div>
+        {% endfor %}
+    </div>
+
+
+  </body>
+</html>
+
+
+
+
