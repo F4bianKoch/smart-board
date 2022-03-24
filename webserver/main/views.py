@@ -3,6 +3,7 @@ from django.http import HttpResponse
 import random
 
 from .variables.greeting_messages import greeting_messages
+from .forms import *
 
 # Create your views here
 
@@ -18,3 +19,10 @@ def home(request):
 
 def weather_widget(request):
     return render(request, 'weather_widget.html', context={})
+
+def todolist(request):
+    ToDoList = ToDoList.objects.all()
+    form = ToDoListForm()
+    context = {'ToDoList':ToDoList, 'form':form}
+    return render(request, 'home.html', context)
+
