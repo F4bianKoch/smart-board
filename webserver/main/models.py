@@ -11,3 +11,8 @@ class Members(models.Model):
         return self.fname + " " + self.lname
 
 # Create your models here.
+class ToDoList(models.Model):
+    chore = models.CharField(max_length=200)
+
+    def __str__(self):
+        return "ToDoList"
