@@ -13,6 +13,7 @@ class Members(models.Model):
 # Create your models here.
 class ToDoList(models.Model):
     chore = models.CharField(max_length=200)
-
+    complete = models.BooleanField(default=False)
+    created = models.DateTimeField(auto_now_add=True, blank=True)
     def __str__(self):
-        return "ToDoList"
+        return self.chore
