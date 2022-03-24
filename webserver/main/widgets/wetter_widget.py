@@ -13,7 +13,6 @@ class WeatherWidget:
         return weather_json
 
     def format_request_small(self, weather_json):
-        print(weather_json)
         current_temperature = weather_json['current']['temp_c']
         weather_icon_link = weather_json['current']['condition']['icon']
         text = weather_json['current']['condition']['text']
