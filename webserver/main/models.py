@@ -7,4 +7,7 @@ class Members(models.Model):
     passwort = models.CharField(max_length=50)
     age = models.IntegerField()
 
+    def __str__(self):
+        return self.fname + " " + self.lname
+
 # Create your models here.
