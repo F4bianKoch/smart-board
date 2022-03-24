@@ -1,3 +1,4 @@
+from turtle import title
 from django.db import models
 from pytz import timezone
 
@@ -13,9 +14,9 @@ class Members(models.Model):
 
 # Create your models here.
 class ToDoList(models.Model):
-    chore = models.CharField(max_length=200)
+    title = models.CharField(max_length=200)
     complete = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add = True )
     
     def __str__(self):
-        return self.chore
+        return self.task
