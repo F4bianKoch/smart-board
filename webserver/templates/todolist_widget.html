@@ -7,12 +7,17 @@
   </header>
   <body>
     <div class="todolist">
+        <p>To Do</p>
+
         <form>
             {{form}}
-            <input type="submit" name="Create Task"
+            <input type="submit" name="Create Task">
         </form>
+        
         {% for ToDoList in tasks %}
-            <div><p>{{ToDoList}}</p></div>
+            <div>
+                <p>{{ToDoList}}</p>s
+            </div>
         {% endfor %}
     </div>
 
