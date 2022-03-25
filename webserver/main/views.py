@@ -1,10 +1,11 @@
+from asyncio import tasks
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 import random
 
 from .variables.greeting_messages import greeting_messages
 from .forms import *
-
+from .models import *
 # Create your views here
 
 
@@ -20,9 +21,18 @@ def home(request):
 def weather_widget(request):
     return render(request, 'weather_widget.html', context={})
 
-def todolist(request):
-    ToDoList = ToDoList.objects.all()
+def todo_widget(request):
+    print("hi")
+    tasks = ToDoList.objects.all()
     form = ToDoListForm()
-    context = {'ToDoList':ToDoList, 'form':form}
-    return render(request, 'home.html', context)
+    context = {'tasks':tasks, 'form':form}
+
+    if request.method == "POST":
+        form = ToDoListForm(request.POST)
+        if form.is_valid():
+            form.save() #save it to the database
+        return redirect('/todolist')
+
+    return render(request, 'todolist_widget.html', context)
+
 
