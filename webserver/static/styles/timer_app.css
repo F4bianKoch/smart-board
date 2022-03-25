@@ -1,0 +1,25 @@
+.timer {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+h1 {
+  margin: 0;
+  height: 72px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#app-icon {
+  height: 72px;
+  font-size: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
