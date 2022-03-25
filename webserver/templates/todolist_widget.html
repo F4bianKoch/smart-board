@@ -5,19 +5,21 @@
     <link rel="stylesheet" href="{% static 'styles/todolist_widget.css' %}" />
     <title>SMART BOARD</title>
   </header>
+
   <body>
     <div class="todolist">
 
         <div class="field">
-          <form>
-            {{form}}
-            <label for="test">Task hier eingeben</label>
-            <input id="test" type="text" name="Create Task">
-        </form>
+          <form method='POST' action='todolist''>
+            {% csrf_token %}
+            {{form.title}}
+            
+            <input id='test' type='submit' name='Create Task'>
+          </form>
         
-        {% for ToDoList in tasks %}
+        {% for task in tasks %}
             <div>
-                <p>{{ToDoList}}</p>s
+                <p>{{task}}</p>
             </div>
         {% endfor %}
 
@@ -28,7 +30,3 @@
 
   </body>
 </html>
-
-
-
-

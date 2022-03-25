@@ -1,5 +1,15 @@
 .todolist {
+  height: 100%;
+  width: 100%;
   color: white;
   text-align: center;
-  padding: 10px;
+  
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: space-around;
+
 }

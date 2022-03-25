@@ -147,6 +147,11 @@ input:checked + .slider:before {
   box-shadow: none;
 }
 
+iframe {
+  height: 100%;
+  width: 100%;
+}
+
 #apps {
   height: 100%;
   margin-left: 104px;
