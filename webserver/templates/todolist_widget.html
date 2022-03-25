@@ -2,16 +2,17 @@
 <html>
   <header>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'styles/todolist.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/todolist_widget.css' %}" />
     <title>SMART BOARD</title>
   </header>
   <body>
     <div class="todolist">
-        <p>To Do</p>
 
-        <form>
+        <div class="field">
+          <form>
             {{form}}
-            <input type="submit" name="Create Task">
+            <label for="test">Task hier eingeben</label>
+            <input id="test" type="text" value="Task" name="Create Task">
         </form>
         
         {% for ToDoList in tasks %}
@@ -19,6 +20,9 @@
                 <p>{{ToDoList}}</p>s
             </div>
         {% endfor %}
+
+        </div>
+        
     </div>
 
 

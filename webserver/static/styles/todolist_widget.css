@@ -1,4 +1,5 @@
 .todolist {
-    position: right;
-    text-align: centre;
-  }
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
