@@ -32,29 +32,29 @@
     </div>
 
     <script>
-      const weather_widget_loc = window.location;
+      //const weather_widget_loc = window.location;
 
-      const protocol_weather_widget = "ws://";
-      if (weather_widget_loc.protocol == "https") {
-        const protocol_weather_widget = "wss://";
-      }
+      //const protocol_weather_widget = "ws://";
+      //if (weather_widget_loc.protocol == "https") {
+      //  const protocol_weather_widget = "wss://";
+      //}
 
-      const weather_connection =
-        protocol_weather_widget + weather_widget_loc.host + "/ws/weather/";
-      var weather_socket = new WebSocket(weather_connection);
+      //const weather_connection =
+      //  protocol_weather_widget + weather_widget_loc.host + "/ws/home/";
+      //var weather_socket = new WebSocket(weather_connection);
 
-      weather_socket.onmessage = function (e) {
-        var django_weather_data = JSON.parse(e.data);
+      //weather_socket.onmessage = function (e) {
+      //  var django_weather_data = JSON.parse(e.data);
 
-        document.querySelector(".temperature").innerText =
-          django_weather_data.temperature + " °C";
-        document.querySelector(".icon").src = django_weather_data.icon;
-        document.querySelector(".text").innerText = django_weather_data.text;
-        document.querySelector(".humidity").innerText =
-          django_weather_data.humidity + " %";
-        document.querySelector(".location").innerText =
-          django_weather_data.location;
-      };
+      //  document.querySelector(".temperature").innerText =
+      //    django_weather_data.temperature + " °C";
+      //  document.querySelector(".icon").src = django_weather_data.icon;
+      //  document.querySelector(".text").innerText = django_weather_data.text;
+      //  document.querySelector(".humidity").innerText =
+      //    django_weather_data.humidity + " %";
+      //  document.querySelector(".location").innerText =
+      //    django_weather_data.location;
+      //};
     </script>
   </body>
 </html>

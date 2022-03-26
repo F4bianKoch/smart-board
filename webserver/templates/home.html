@@ -85,7 +85,7 @@
         const protocol = "wss://";
       }
 
-      const connection = protocol + loc.host + "/ws/time/";
+      const connection = protocol + loc.host + "/ws/home/";
       var socket = new WebSocket(connection);
 
       socket.onmessage = function (e) {
@@ -99,6 +99,17 @@
         date_fields.forEach(function (date_fields) {
           date_fields.innerText = djangoData.date;
         });
+
+        if(djangoData.temperature !== undefined){
+          document.querySelector(".temperature").innerText =
+            djangoData.temperature + " °C";
+          document.querySelector(".icon").src = djangoData.icon;
+          document.querySelector(".text").innerText =djangoData.text;
+          document.querySelector(".humidity").innerText =
+          djangoData.humidity + " %";
+          document.querySelector(".location").innerText =
+            djangoData.location;
+        }
       };
     </script>
     <script>
