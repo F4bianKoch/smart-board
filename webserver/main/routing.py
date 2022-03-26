@@ -1,7 +1,7 @@
 import imp
 from django.urls import path
 
-from .consumers import HomePageConsumer, ScreensaverConsumer
+from .consumers.main_consumers import HomePageConsumer, ScreensaverConsumer
 
 
 ws_urlpatterns = [

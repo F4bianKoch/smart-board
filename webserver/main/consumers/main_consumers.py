@@ -6,8 +6,8 @@ import time
 
 from channels.generic.websocket import WebsocketConsumer
 
-from .widgets.time_feature import current_time
-from .widgets.wetter_widget import WeatherWidget
+from ..widgets.time_feature import current_time
+from ..widgets.wetter_widget import WeatherWidget
 
 
 class ScreensaverConsumer(WebsocketConsumer):
