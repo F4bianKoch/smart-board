@@ -1,13 +1,7 @@
-body {
-  height: 100%;
-  
-}
 .todolist {
-  height: 100%;
-  background-color: var(--color);
-  width: 100%;
   text-align: center;
-  
+  height: 100%;
+  width: 100%;
 }
 
 .field {
