@@ -1,11 +1,10 @@
 import imp
 from django.urls import path
 
-from .consumers import TimeConsumer, WeatherWidgetConsumer, TimeWidgetConsumer
+from .consumers.main_consumers import HomePageConsumer, ScreensaverConsumer
 
 
 ws_urlpatterns = [
-    path('ws/time/', TimeConsumer.as_asgi()),
-    path('ws/timeWidget/', TimeWidgetConsumer.as_asgi()),
-    path('ws/weather/', WeatherWidgetConsumer.as_asgi()),
+    path('ws/screensaver/', ScreensaverConsumer.as_asgi()),
+    path('ws/home/', HomePageConsumer.as_asgi()),
 ]

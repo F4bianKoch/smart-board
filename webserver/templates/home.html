@@ -14,6 +14,7 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'styles/home_page.css' %}" />
     <link rel="stylesheet" href="{% static 'styles/general.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/themes.css' %}" />
     <title>SMART BOARD</title>
   </head>
   
@@ -60,7 +61,23 @@
       </div>
 
       <div class="apps-grid">
-
+        <div class="app 1">
+          {%include "apps/app_icons/timer_app_icon.html" %}
+        </div>
+        <div class="app 2"></div>
+        <div class="app 3"></div>
+        <div class="app 4"></div>
+        <div class="app 5"></div>
+        <div class="app 6"></div>
+        <div class="app 7"></div>
+        <div class="app 8"></div>
+        <div class="app 9"></div>
+        <div class="app 10"></div>
+        <div class="app 11"></div>
+        <div class="app 12"></div>
+        <div class="app 13"></div>
+        <div class="app 14"></div>
+        <div class="app 15"></div>
       </div>
     </div>
     <script>
@@ -71,7 +88,7 @@
         const protocol = "wss://";
       }
 
-      const connection = protocol + loc.host + "/ws/time/";
+      const connection = protocol + loc.host + "/ws/home/";
       var socket = new WebSocket(connection);
 
       socket.onmessage = function (e) {
@@ -79,12 +96,23 @@
 
         time_fields = document.querySelectorAll(".time");
         date_fields = document.querySelectorAll(".date");
-        time_fields.forEach(function(time_fields){
+        time_fields.forEach(function (time_fields) {
           time_fields.innerText = djangoData.time;
         });
-        date_fields.forEach(function(date_fields){
+        date_fields.forEach(function (date_fields) {
           date_fields.innerText = djangoData.date;
         });
+
+        if(djangoData.temperature !== undefined){
+          document.querySelector(".temperature").innerText =
+            djangoData.temperature + " °C";
+          document.querySelector(".icon").src = djangoData.icon;
+          document.querySelector(".text").innerText =djangoData.text;
+          document.querySelector(".humidity").innerText =
+          djangoData.humidity + " %";
+          document.querySelector(".location").innerText =
+            djangoData.location;
+        }
       };
     </script>
     <script>

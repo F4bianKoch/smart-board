@@ -2,11 +2,15 @@
 <html lang="en">
   <head>
     {% load static %} 
-    <link rel="stylesheet" href="{% static 'styles/screensaver.css' %}""> 
+    <link rel="stylesheet" href="{% static 'styles/screensaver.css' %}"">
     <link rel="stylesheet" href="{% static 'styles/general.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/themes.css' %}" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Poppins:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron&family=Poppins:wght@100;300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
     <title>Smart-board</title>
   </head>
   <body>
@@ -16,24 +20,23 @@
         <p class="date">{{ date }}</p>
       </div>
     </a>
-
   </body>
   <script>
-    const loc = window.location
-    
-    const protocol = 'ws://'
-    if (loc.protocol == 'https'){
-      const protocol = 'wss://'
+    const loc = window.location;
+
+    const protocol = "ws://";
+    if (loc.protocol == "https") {
+      const protocol = "wss://";
     }
 
-    const connection = protocol + loc.host + '/ws/time/';
+    const connection = protocol + loc.host + "/ws/screensaver/";
     var socket = new WebSocket(connection);
 
     socket.onmessage = function (e) {
-        var djangoData = JSON.parse(e.data);
+      var djangoData = JSON.parse(e.data);
 
-        document.querySelector('.time').innerText = djangoData.time;
-        document.querySelector('.date').innerText = djangoData.date;
-    }
+      document.querySelector(".time").innerText = djangoData.time;
+      document.querySelector(".date").innerText = djangoData.date;
+    };
   </script>
 </html>

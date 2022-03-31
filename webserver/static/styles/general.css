@@ -1,24 +1,9 @@
-:root {
-  --color: white;
-  --background: #222831;
-  --main-color: #393E46;
-  --link-color: #00FFF5;
-  --shadow-color: rgba(29, 30, 36, 0.726);
-}
-
-[data-theme="dark"] {
-    --color: #0090ff;
-    --background: rgb(223, 240, 255);
-    --main-color: white;
-    --link-color: #0090ff;
-    --shadow-color: rgba(29, 30, 36, 0.726);
-}
-
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   height: 100%;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   background-color: var(--main-color);
   overflow: hidden;
 }
