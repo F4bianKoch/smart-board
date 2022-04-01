@@ -4,6 +4,22 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'styles/weather_widget.css' %}" />
     <title>SMART BOARD</title>
+    <script>
+      function update_func(djangoData) {
+        console.log(djangoData);
+
+        if(djangoData.weatherData !== undefined){
+          document.querySelector(".temperature").innerText =
+            djangoData.weatherData.temperature + " °C";
+          document.querySelector(".icon").src = djangoData.weatherData.icon;
+          document.querySelector(".text").innerText = djangoData.weatherData.text;
+          document.querySelector(".humidity").innerText =
+          djangoData.weatherData.humidity + " %";
+          document.querySelector(".location").innerText =
+            djangoData.weatherData.location;
+        }
+      }
+    </script>
   </header>
   <body>
     <div class="weather">
@@ -31,30 +47,5 @@
       </div>
     </div>
 
-    <script>
-      //const weather_widget_loc = window.location;
-
-      //const protocol_weather_widget = "ws://";
-      //if (weather_widget_loc.protocol == "https") {
-      //  const protocol_weather_widget = "wss://";
-      //}
-
-      //const weather_connection =
-      //  protocol_weather_widget + weather_widget_loc.host + "/ws/home/";
-      //var weather_socket = new WebSocket(weather_connection);
-
-      //weather_socket.onmessage = function (e) {
-      //  var django_weather_data = JSON.parse(e.data);
-
-      //  document.querySelector(".temperature").innerText =
-      //    django_weather_data.temperature + " °C";
-      //  document.querySelector(".icon").src = django_weather_data.icon;
-      //  document.querySelector(".text").innerText = django_weather_data.text;
-      //  document.querySelector(".humidity").innerText =
-      //    django_weather_data.humidity + " %";
-      //  document.querySelector(".location").innerText =
-      //    django_weather_data.location;
-      //};
-    </script>
   </body>
 </html>
