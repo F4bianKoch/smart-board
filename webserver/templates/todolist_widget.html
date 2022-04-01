@@ -8,25 +8,30 @@
 
   <body>
     <div class="todolist">
-
-        <div class="field">
-          <form method='POST' action='todolist''>
-            {% csrf_token %}
-            {{form.title}}
-            
-            <input id='test' type='submit' name='Create Task'>
-          </form>
         
-        {% for task in tasks %}
-            <div>
-                <p>{{task}}</p>
-            </div>
-        {% endfor %}
+          <div class="field">
+            <form method='POST' action='todolist''>
+              {% csrf_token %}
+              {{form.title}}
+              
+              <input id='test' type='submit' name='Create Task'>
+            </form>
+          
+          {% for task in tasks %}
+              <div>
+                  <p>{{task}}</p>
+              </div>
+          {% endfor %}
 
-        </div>
+            <div>
+              <a href="/todolist_app">
+                <p>+</p>
+              </a>
+            </div>
+
+          </div>
         
     </div>
-
 
   </body>
 </html>

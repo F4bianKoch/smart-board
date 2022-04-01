@@ -2,6 +2,7 @@
   text-align: center;
   height: 100%;
   width: 100%;
+  
 }
 
 .field {
@@ -9,5 +10,6 @@
   flex-direction: column;
   justify-content: center;
   align-content: space-around;
+  color: var(--color)
 
 }
