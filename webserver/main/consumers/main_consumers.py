@@ -104,12 +104,8 @@ class HomePageConsumer(WebsocketConsumer):
                     'date': str(current_date),
                 }
                 content.update(time)
-                content["todos"] = content[0] = content["title"] = "Zimmer aufräumen"
-                content["todos"] = content[0] = content["duedate"] = "1.04"
                 self.send(json.dumps(content))
 
-                        
-        
             old_time = current_time
             # break if websocket was disconnected
             if self.stop:

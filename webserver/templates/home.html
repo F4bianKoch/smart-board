@@ -96,7 +96,8 @@
     <script>
       socket.onmessage = function (e) {
         var djangoData = JSON.parse(e.data);
-        update_func(djangoData);
+        update_weather(djangoData);
+        update_todo(djangoData);
 
         time_fields = document.querySelectorAll(".time");
         date_fields = document.querySelectorAll(".date");

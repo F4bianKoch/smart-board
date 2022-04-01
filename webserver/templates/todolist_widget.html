@@ -8,7 +8,6 @@
 
   <body>
     <div class="todolist">
-      <p></p>
       <div>
         <a href="/todolist_app">
             <p>+</p>
@@ -17,18 +16,19 @@
         
     </div>
     <script>
-
-      function update_func(djangoDataToDo){
-        let todos = djangoDataToDo.todos
-        console.log(todos)
-        todos.forEach(function (todo) {
-          const tododiv = document.createElement("div");
-          tododiv.innerText = todo.duedate + " " + todo.title;
-          const checkbox = document.createElement("input");
-          checkbox.type = "checkbox";
-
-        });
-        
+      let old_todos = undefined;
+      function update_todo(djangoData) {
+        let todos = djangoData.todos;
+        let list = document.querySelector('.todolist');
+        //todos = {0:{1:'a'}, 1:{2:'b'}, 2:{3:'c'}}
+        if (JSON.stringify(todos) !== JSON.stringify(old_todos)){
+          for (var key in todos){
+              let todo_div = document.createElement('div');
+              todo_div.innerText = todos[key]['dueDate'] + " " + todos[key]['title'];
+              list.append(todo_div);
+              old_todos = todos;
+          }
+        }
       }
     </script>
   </body>

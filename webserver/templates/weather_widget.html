@@ -5,9 +5,7 @@
     <link rel="stylesheet" href="{% static 'styles/weather_widget.css' %}" />
     <title>SMART BOARD</title>
     <script>
-      function update_func(djangoData) {
-        console.log(djangoData);
-
+      function update_weather(djangoData) {
         if(djangoData.weatherData !== undefined){
           document.querySelector(".temperature").innerText =
             djangoData.weatherData.temperature + " °C";
