@@ -8,30 +8,28 @@
 
   <body>
     <div class="todolist">
-        
-          <div class="field">
-            <form method='POST' action='todolist''>
-              {% csrf_token %}
-              {{form.title}}
-              
-              <input id='test' type='submit' name='Create Task'>
-            </form>
-          
-          {% for task in tasks %}
-              <div>
-                  <p>{{task}}</p>
-              </div>
-          {% endfor %}
-
-            <div>
-              <a href="/todolist_app">
-                <p>+</p>
-              </a>
-            </div>
-
-          </div>
+      <p></p>
+      <div>
+        <a href="/todolist_app">
+            <p>+</p>
+        </a>
+      </div>
         
     </div>
+    <script>
 
+      function update_func(djangoDataToDo){
+        let todos = djangoDataToDo.todos
+        console.log(todos)
+        todos.forEach(function (todo) {
+          const tododiv = document.createElement("div");
+          tododiv.innerText = todo.duedate + " " + todo.title;
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+
+        });
+        
+      }
+    </script>
   </body>
 </html>
