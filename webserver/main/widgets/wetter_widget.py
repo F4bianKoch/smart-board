@@ -25,14 +25,16 @@ class WeatherWidget:
         tomorrow_icon = weather_json['forecast']['forecastday'][1]['day']['condition']['icon']
 
         weather = {
-            'temperature': current_temperature,
-            'icon': weather_icon_link,
-            'text': text,
-            'humidity': humidity,
-            'location': location,
-            'tomorrow_max_temperature': tomorrow_max_temperature,
-            'tomorrow_min_temperature': tomorrow_min_temperature,
-            'tomorrow_icon': tomorrow_icon,
-            'tomorrow_text': tomorrow_text
+            'weatherData': {
+                'temperature': current_temperature,
+                'icon': weather_icon_link,
+                'text': text,
+                'humidity': humidity,
+                'location': location,
+                'tomorrow_max_temperature': tomorrow_max_temperature,
+                'tomorrow_min_temperature': tomorrow_min_temperature,
+                'tomorrow_icon': tomorrow_icon,
+                'tomorrow_text': tomorrow_text
+            }
         }
         return weather
