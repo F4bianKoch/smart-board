@@ -16,12 +16,13 @@
         
     </div>
     <script>
+      // updates todos if websocket sends new ones
       let old_todos = undefined;
       function update_todo(djangoData) {
         let todos = djangoData.todos;
         let list = document.querySelector('.todolist');
-        //todos = {0:{1:'a'}, 1:{2:'b'}, 2:{3:'c'}}
         if (JSON.stringify(todos) !== JSON.stringify(old_todos)){
+          // loops through list of todos and displays them on website
           for (var key in todos){
               let todo_div = document.createElement('div');
               todo_div.innerText = todos[key]['dueDate'] + " " + todos[key]['title'];

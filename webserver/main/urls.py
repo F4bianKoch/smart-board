@@ -6,6 +6,4 @@ from . import views
 urlpatterns = [
     path('screensaver', views.screensaver),
     path('home', views.home),
-    path('weather_widget', views.weather_widget),
-    path('todolist', views.todo_widget)
 ]

@@ -22,6 +22,7 @@
     </a>
   </body>
   <script>
+    // conect to websocket
     const loc = window.location;
 
     const protocol = "ws://";
@@ -32,6 +33,7 @@
     const connection = protocol + loc.host + "/ws/screensaver/";
     var socket = new WebSocket(connection);
 
+    // update time if websocket has new time data
     socket.onmessage = function (e) {
       var djangoData = JSON.parse(e.data);
 

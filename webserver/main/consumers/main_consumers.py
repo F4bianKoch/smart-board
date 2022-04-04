@@ -12,7 +12,11 @@ from ..widgets.wetter_widget import WeatherWidget
 
 
 class ScreensaverConsumer(WebsocketConsumer):
-    ''' Websocket for the screensaver '''
+    '''
+        Websocket for the screensaver 
+        current time interface: get_time()
+        uses 
+    '''
 
     def connect(self):
         ''' on websocket connect '''
@@ -51,7 +55,14 @@ class ScreensaverConsumer(WebsocketConsumer):
 
 
 class HomePageConsumer(WebsocketConsumer):
-    ''' Websocket for the homepage '''
+    ''' 
+        Websocket for the homepage 
+        current time interface: get_time()
+        current weather interface: get_weather()
+        from config.json:
+            - location: for weather interface
+            - weather_api_key: for weather interface
+    '''
 
     def connect(self):
         ''' on websocket connect '''

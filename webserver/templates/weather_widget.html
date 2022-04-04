@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="{% static 'styles/weather_widget.css' %}" />
     <title>SMART BOARD</title>
     <script>
+      // updates todos if websocket sends new ones
       function update_weather(djangoData) {
         if(djangoData.weatherData !== undefined){
           document.querySelector(".temperature").innerText =

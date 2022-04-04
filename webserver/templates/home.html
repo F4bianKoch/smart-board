@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{% static 'styles/general.css' %}" />
     <link rel="stylesheet" href="{% static 'styles/themes.css' %}" />
     <script>
+      // conection to websocket
 
       const loc = window.location;
 
@@ -94,11 +95,14 @@
       </div>
     </div>
     <script>
+      // called when websocket has new data
       socket.onmessage = function (e) {
         var djangoData = JSON.parse(e.data);
+        // update widgets
         update_weather(djangoData);
         update_todo(djangoData);
 
+        // update time
         time_fields = document.querySelectorAll(".time");
         date_fields = document.querySelectorAll(".date");
         time_fields.forEach(function (time_fields) {
@@ -110,6 +114,7 @@
       };
     </script>
     <script>
+      // for the dark - light mode
       const toggleSwitch = document.querySelector(
         '.theme-switch input[type="checkbox"]'
       );
@@ -146,6 +151,7 @@
       }
     </script>
     <script>
+      // for the 60s timeout redirect to screensaver
       (function () {
         var idleDurationSecs = 60;
         var redirectUrl = "/screensaver"; // Redirect idle users to this URL
