@@ -19,10 +19,10 @@ def main():
             "available on your PYTHONPATH environment variable? Did you "
             "forget to activate a virtual environment?"
         ) from exc
-    if search_for_config():
+    if search_for_config():          # check if config.json file exists
         execute_from_command_line(sys.argv)
     else:
-        raise ConfigNotFoundError(
+        raise ConfigNotFoundError(   # if not raises config.json not found error
             'webserver/main/config.json file was not found')
 
 
