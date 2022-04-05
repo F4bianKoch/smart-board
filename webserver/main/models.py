@@ -12,11 +12,14 @@ class Members(models.Model):
     def __str__(self):
         return self.fname + " " + self.lname
 
-# Create your models here.
+#Database Model for ToDoList
 class ToDoList(models.Model):
+    '''ToDoList class represents a table in the Database'''
+    #setting the columns in the table and defining the value types
     title = models.CharField(max_length=200)
     complete = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add = True )
     
     def __str__(self):
+        '''Displays the only the ToDoList title of one Data array'''
         return self.title
