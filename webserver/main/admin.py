@@ -5,3 +5,4 @@ admin.site.register(Members)
 # Register your models here.
 
 admin.site.register(ToDoList)
+#ToDoList model is registered on admin
