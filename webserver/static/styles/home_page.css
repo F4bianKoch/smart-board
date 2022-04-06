@@ -51,6 +51,7 @@ main {
   position: absolute;
   left: 4rem;
   top: 0rem;
+  padding-left: 10px;
 }
 
 .date {
