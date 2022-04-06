@@ -1,176 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <link
-      href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Orbitron&family=Poppins:wght@100;300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'styles/home_page.css' %}" />
-    <link rel="stylesheet" href="{% static 'styles/general.css' %}" />
-    <link rel="stylesheet" href="{% static 'styles/themes.css' %}" />
-    <script>
-      // conection to websocket
+{% extends 'base.html' %}
+{% block content %}
+<script>
 
-      const loc = window.location;
+  const loc = window.location;
 
-      const protocol = "ws://";
-      if (loc.protocol == "https") {
-        const protocol = "wss://";
-      }
+  const protocol = "ws://";
+  if (loc.protocol == "https") {
+    const protocol = "wss://";
+  }
 
-      const connection = protocol + loc.host + "/ws/home/";
-      var socket = new WebSocket(connection);
+  const connection = protocol + loc.host + "/ws/home/";
+  var socket = new WebSocket(connection);
 
-    </script>
-    <title>SMART BOARD</title>
-  </head>
-  
-  <body>
-    <main>
-      <div class="sidebar">
-        <a href="#main-part" class="home">
-          <span class="material-icons-outlined">home</span>
-        </a>
-        <a href="#apps" class="apps">
-          <span class="material-icons-outlined">widgets</span>
-        </a>
-        <a href="" class="settings">
-          <span class="material-icons">tune</span>
-        </a>
-      </div>
+</script>
 
-      <div id="main-part">
-        <div class="header">
-          <p class="time">N/A</p>
-          <p class="date">N/A</p>
+  <div id="main-part">
+    <div class="header">
+      <p class="time">N/A</p>
+      <p class="date">N/A</p>
 
-          <div class="theme-switch-wrapper">
-            <label class="theme-switch" for="checkbox">
-              <input type="checkbox" id="checkbox" />
-              <div class="slider round"></div>
-            </label>
-          </div>
-        </div>
-
-        <div class="widget-grid">
-          <div class="widget 1">{% include "weather_widget.html" %}</div>
-          
-          <div class="widget 2">{% include "todolist_widget.html" %}</div>
-          <div class="widget 3"></div>
-          <div class="widget 4"></div>
-        </div>
-      </div>
-    </main>
-    <div id="apps">
-      <div class="header">
-        <p class="time">N/A</p>
-        <p class="date">N/A</p>
-      </div>
-
-      <div class="apps-grid">
-        <div class="app 1">
-          {%include "apps/app_icons/timer_app_icon.html" %}
-        </div>
-        <div class="app 2"></div>
-        <div class="app 3"></div>
-        <div class="app 4"></div>
-        <div class="app 5"></div>
-        <div class="app 6"></div>
-        <div class="app 7"></div>
-        <div class="app 8"></div>
-        <div class="app 9"></div>
-        <div class="app 10"></div>
-        <div class="app 11"></div>
-        <div class="app 12"></div>
-        <div class="app 13"></div>
-        <div class="app 14"></div>
-        <div class="app 15"></div>
+      <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="checkbox">
+          <input type="checkbox" id="checkbox" />
+          <div class="slider round"></div>
+        </label>
       </div>
     </div>
-    <script>
-      // called when websocket has new data
-      socket.onmessage = function (e) {
-        var djangoData = JSON.parse(e.data);
-        // update widgets
-        update_weather(djangoData);
-        update_todo(djangoData);
 
-        // update time
-        time_fields = document.querySelectorAll(".time");
-        date_fields = document.querySelectorAll(".date");
-        time_fields.forEach(function (time_fields) {
-          time_fields.innerText = djangoData.time;
-        });
-        date_fields.forEach(function (date_fields) {
-          date_fields.innerText = djangoData.date;
-        });
-      };
-    </script>
-    <script>
-      // for the dark - light mode
-      const toggleSwitch = document.querySelector(
-        '.theme-switch input[type="checkbox"]'
-      );
+    <div class="widget-grid">
+      <div class="widget 1">{% include "weather_widget.html" %}</div>
+      <div class="widget 2">{% include "todolist_widget.html" %}</div>
+      <div class="widget 3"></div>
+      <div class="widget 4"></div>
+    </div>
+  </div>
+</main>
+<div id="apps">
+  <div class="header">
+    <p class="time">N/A</p>
+    <p class="date">N/A</p>
+  </div>
 
-      function switchTheme(e) {
-        if (e.target.checked) {
-          document.documentElement.setAttribute("data-theme", "dark");
-        } else {
-          document.documentElement.setAttribute("data-theme", "light");
-        }
-      }
+  <div class="apps-grid">
+    <div class="app 1">
+      {%include "apps/app_icons/timer_app_icon.html" %}
+    </div>
+    <div class="app 2"></div>
+    <div class="app 3"></div>
+    <div class="app 4"></div>
+    <div class="app 5"></div>
+    <div class="app 6"></div>
+    <div class="app 7"></div>
+    <div class="app 8"></div>
+    <div class="app 9"></div>
+    <div class="app 10"></div>
+    <div class="app 11"></div>
+    <div class="app 12"></div>
+    <div class="app 13"></div>
+    <div class="app 14"></div>
+    <div class="app 15"></div>
+  </div>
+</div>
+<script>
+  socket.onmessage = function (e) {
+    var djangoData = JSON.parse(e.data);
+    update_weather(djangoData);
+    update_todo(djangoData);
 
-      toggleSwitch.addEventListener("change", switchTheme, false);
-
-      const currentTheme = localStorage.getItem("theme")
-        ? localStorage.getItem("theme")
-        : null;
-      if (currentTheme) {
-        document.documentElement.setAttribute("data-theme", currentTheme);
-
-        if (currentTheme === "dark") {
-          toggleSwitch.checked = true;
-        }
-      }
-
-      function switchTheme(e) {
-        if (e.target.checked) {
-          document.documentElement.setAttribute("data-theme", "dark");
-          localStorage.setItem("theme", "dark"); //add this
-        } else {
-          document.documentElement.setAttribute("data-theme", "light");
-          localStorage.setItem("theme", "light"); //add this
-        }
-      }
-    </script>
-    <script>
-      // for the 60s timeout redirect to screensaver
-      (function () {
-        var idleDurationSecs = 60;
-        var redirectUrl = "/screensaver"; // Redirect idle users to this URL
-        var idleTimeout;
-
-        var resetIdleTimeout = function () {
-          if (idleTimeout) clearTimeout(idleTimeout);
-
-          idleTimeout = setTimeout(function () {
-            location.href = redirectUrl;
-          }, idleDurationSecs * 1000);
-        };
-
-        resetIdleTimeout();
-
-        ["click", "touchstart", "mousemove"].forEach((evt) =>
-          document.addEventListener(evt, resetIdleTimeout, false)
-        );
-      })();
-    </script>
-  </body>
-</html>
+    time_fields = document.querySelectorAll(".time");
+    date_fields = document.querySelectorAll(".date");
+    time_fields.forEach(function (time_fields) {
+      time_fields.innerText = djangoData.time;
+    });
+    date_fields.forEach(function (date_fields) {
+      date_fields.innerText = djangoData.date;
+    });
+  };
+</script>
+{% endblock %}

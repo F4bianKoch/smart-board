@@ -4,13 +4,8 @@ import os
 from shutil import ExecError
 import sys
 
-from utils import search_for_config
-
-
-class ConfigNotFoundError(Exception):
-    ''' This Error is getting raised if webserver/main/settings.json is not found'''
-
-    pass
+from utils.config_utils import search_for_config
+from utils.config_utils import ConfigNotFoundError
 
 
 def main():
@@ -24,10 +19,11 @@ def main():
             "available on your PYTHONPATH environment variable? Did you "
             "forget to activate a virtual environment?"
         ) from exc
-    if search_for_config():
+    if search_for_config():          # check if config.json file exists
         execute_from_command_line(sys.argv)
     else:
-        raise ConfigNotFoundError('webserver/main/config.json file was not found')
+        raise ConfigNotFoundError(   # if not raises config.json not found error
+            'webserver/main/config.json file was not found')
 
 
 if __name__ == '__main__':

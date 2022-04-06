@@ -7,9 +7,9 @@ import time
 
 from channels.generic.websocket import WebsocketConsumer
 
-from ..widgets.time_feature import current_time
-from ..widgets.wetter_widget import WeatherWidget
-#from .. import ToDoList
+from utils.config_utils import get_config_data
+
+from ..widgets.weather_widget import WeatherWidget
 
 
 class ScreensaverConsumer(WebsocketConsumer):
@@ -72,9 +72,7 @@ class HomePageConsumer(WebsocketConsumer):
         content = {}
 
         # setup for weather widget
-        f = open('main/config.json')
-        config = json.load(f)
-        f.close()
+        config = get_config_data()
         api_key = config["weather_widget"]["api_key"]
         location = config["weather_widget"]["location"]
         weather_widget = WeatherWidget(api_key, location)
@@ -153,4 +151,4 @@ class HomePageConsumer(WebsocketConsumer):
         del self.thread_weather_widget
 
 
-print(ToDoList)
+#print(ToDoList)
