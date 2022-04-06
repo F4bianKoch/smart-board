@@ -9,6 +9,7 @@ from channels.generic.websocket import WebsocketConsumer
 
 from ..widgets.time_feature import current_time
 from ..widgets.wetter_widget import WeatherWidget
+#from .. import ToDoList
 
 
 class ScreensaverConsumer(WebsocketConsumer):
@@ -121,9 +122,35 @@ class HomePageConsumer(WebsocketConsumer):
             # break if websocket was disconnected
             if self.stop:
                 break
+    
+    def toDo_list(self, content):
+        
+        while True:
+            # querry time
+            time_query = datetime.now(pytz.timezone('Europe/Berlin'))
+            current_time = time_query.strftime('%H:%M')
+            # format querry output
+            day = time_query.strftime('%a')
+            current_date = time_query.strftime(f'{day[0:2]} %d.%m.%Y')
+            # send to websocket
+            if current_time != old_time:
+                time = {
+                    'time': str(current_time),
+                    'date': str(current_date),
+                }
+                content.update(time)
+                self.send(json.dumps(content))
+
+            old_time = current_time
+            # break if websocket was disconnected
+            if self.stop:
+                break
 
     def disconnect(self, code):
         ''' on websocket disconnect '''
         self.stop = True
         del self.thread_time
         del self.thread_weather_widget
+
+
+print(ToDoList)
