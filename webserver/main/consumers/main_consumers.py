@@ -85,6 +85,9 @@ class HomePageConsumer(WebsocketConsumer):
             target=self.get_weather, args=[weather_widget, content])
         self.thread_weather_widget.start()
         self.thread_time.start()
+        self.thread_todo = threading.Thread(
+            target=self.toDo_list, args=[content])
+        self.thread_todo.start()
 
     def get_weather(self, weather_widget, content):
         ''' get current weather every 20min '''
@@ -131,14 +134,16 @@ class HomePageConsumer(WebsocketConsumer):
             # querry data
             current_data = ToDoList.objects.values('title').all()
             # get single titles out of the dict
-            for i in current_data:
-                i -= 1
+            for i in range(len(current_data)):
+                
                 x = current_data[i]['title']
                 current_values.append(x)
             # send to websocket
             if current_values != old_values:
-                data  = {
-                    'title': str(current_values),
+                data  = {'todos':
+                        {0: {
+                         'title':str(current_values), 'dueDate': '10.05.25'}
+                }
                 }
                 content.update(data)
                 self.send(json.dumps(content))
@@ -153,5 +158,6 @@ class HomePageConsumer(WebsocketConsumer):
         self.stop = True
         del self.thread_time
         del self.thread_weather_widget
+        del self.thread_todo
 
 
