@@ -128,9 +128,10 @@ class HomePageConsumer(WebsocketConsumer):
     
     def toDo_list(self, content):
         old_data = {}
-        current_values = []
+        
         
         while True:
+            current_values = []
             # querry data
             current_data = ToDoList.objects.values('title').all()
             # send to websocket
