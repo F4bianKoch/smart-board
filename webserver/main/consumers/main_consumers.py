@@ -10,6 +10,7 @@ from channels.generic.websocket import WebsocketConsumer
 from utils.config_utils import get_config_data
 
 from ..widgets.weather_widget import WeatherWidget
+from ..models import ToDoList
 
 
 class ScreensaverConsumer(WebsocketConsumer):
@@ -110,9 +111,10 @@ class HomePageConsumer(WebsocketConsumer):
             # send to websocket
             if current_time != old_time:
                 time = {
-                    'time': str(current_time),
+                        'time': str(current_time),
                     'date': str(current_date),
                 }
+                
                 content.update(time)
                 self.send(json.dumps(content))
 
@@ -122,24 +124,26 @@ class HomePageConsumer(WebsocketConsumer):
                 break
     
     def toDo_list(self, content):
+        old_values = {}
+        current_values = []
         
         while True:
-            # querry time
-            time_query = datetime.now(pytz.timezone('Europe/Berlin'))
-            current_time = time_query.strftime('%H:%M')
-            # format querry output
-            day = time_query.strftime('%a')
-            current_date = time_query.strftime(f'{day[0:2]} %d.%m.%Y')
+            # querry data
+            current_data = ToDoList.objects.values('title').all()
+            # get single titles out of the dict
+            for i in current_data:
+                i -= 1
+                x = current_data[i]['title']
+                current_values.append(x)
             # send to websocket
-            if current_time != old_time:
-                time = {
-                    'time': str(current_time),
-                    'date': str(current_date),
+            if current_values != old_values:
+                data  = {
+                    'title': str(current_values),
                 }
-                content.update(time)
+                content.update(data)
                 self.send(json.dumps(content))
 
-            old_time = current_time
+            old_values = current_values
             # break if websocket was disconnected
             if self.stop:
                 break
@@ -151,4 +155,3 @@ class HomePageConsumer(WebsocketConsumer):
         del self.thread_weather_widget
 
 
-#print(ToDoList)
