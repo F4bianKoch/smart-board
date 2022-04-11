@@ -144,9 +144,19 @@ class HomePageConsumer(WebsocketConsumer):
                 
                 data  = {'todos':
                     {0: {
-                    'title':str(current_values), 'dueDate': '10.05.25'}
+                    'title': current_values[0], 'dueDate': '10.05.25'}
                 }
                 }
+
+                i = 1
+                for x in current_values:
+                    key = f"title{i}"
+                    dueDate = f"dueDate{i}"
+
+                    data['todos'][0][key] = x
+                    data['todos'][0][dueDate] = "10.05.25"
+                    i += 1
+                
                 content.update(data)
                 self.send(json.dumps(content))
 

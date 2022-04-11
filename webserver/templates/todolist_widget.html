@@ -25,7 +25,9 @@
           // loops through list of todos and displays them on website
           for (var key in todos){
               let todo_div = document.createElement('div');
-              todo_div.innerText = todos[key]['dueDate'] + " " + todos[key]['title'];
+              todo_div.innerText = todos[key]['dueDate'] + " " + todos[key]['title1']
+              + "\n" + todos[key]['dueDate'] + " " + todos[key]['title2']
+              + "\n" + todos[key]['dueDate'] + " " + todos[key]['title3'];
               list.append(todo_div);
               old_todos = todos;
           }
