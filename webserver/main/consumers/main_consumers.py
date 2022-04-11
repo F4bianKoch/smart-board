@@ -127,28 +127,29 @@ class HomePageConsumer(WebsocketConsumer):
                 break
     
     def toDo_list(self, content):
-        old_values = {}
+        old_data = {}
         current_values = []
         
         while True:
             # querry data
             current_data = ToDoList.objects.values('title').all()
-            # get single titles out of the dict
-            for i in range(len(current_data)):
-                
-                x = current_data[i]['title']
-                current_values.append(x)
             # send to websocket
-            if current_values != old_values:
+            if current_data != old_data:
+                # get single titles out of the dict
+                for i in range(len(current_data)):
+                    
+                    x = current_data[i]['title']
+                    current_values.append(x)
+                
                 data  = {'todos':
-                        {0: {
-                         'title':str(current_values), 'dueDate': '10.05.25'}
+                    {0: {
+                    'title':str(current_values), 'dueDate': '10.05.25'}
                 }
                 }
                 content.update(data)
                 self.send(json.dumps(content))
 
-            old_values = current_values
+            old_data = current_data
             # break if websocket was disconnected
             if self.stop:
                 break
