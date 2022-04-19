@@ -21,5 +21,4 @@ class ToDoList(models.Model):
     created = models.DateTimeField(auto_now_add = True )
     
     def __str__(self):
-        '''Displays the only the ToDoList title of one Data array'''
         return self.title
