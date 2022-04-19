@@ -4,7 +4,6 @@ from django.http import HttpResponse
 import random
 
 from .variables.greeting_messages import greeting_messages
-from .forms import *
 from .models import *
 
 
