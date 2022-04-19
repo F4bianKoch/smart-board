@@ -17,3 +17,4 @@ def home(request):
     ''' view for homepage '''
     msg = greeting_messages[random.randint(1, len(greeting_messages))]
     return render(request, 'home.html', context={'msg': msg})
+
