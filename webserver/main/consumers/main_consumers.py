@@ -134,6 +134,7 @@ class HomePageConsumer(WebsocketConsumer):
             current_values = []
             # querry data
             current_data = ToDoList.objects.values('title').all()
+            current_data_date = ToDoList.objects.values('dueDate').all()
             # send to websocket
             if current_data != old_data:
                 # get single titles out of the dict
