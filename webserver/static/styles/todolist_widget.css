@@ -5,11 +5,31 @@
   
 }
 
-.field {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: space-around;
-  color: var(--color)
+.title {
+  color: var(--link-color);
+  padding-top: 1.5rem;
+  padding-bottom: 8px;
+  text-decoration: underline;
+}
 
+.todo {
+  margin-left: 2.5rem;
+  text-align: left;
+  font-size: 20px;
+}
+
+.add{
+  display: inline-block;
+  text-align: center;
+  font-size: 20px;
+  width: 35px;
+  height: 35px;
+  margin-left: 85%;
+  background-color: var(--main-color);
+  border-radius: 17.5px;
+}
+
+.material-icons{
+  padding-top: 5.5px;
+  padding-left: 0;
 }
