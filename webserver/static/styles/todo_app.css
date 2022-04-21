@@ -1,27 +1,12 @@
-.todo_app {
-    padding-left: 1rem;
-    padding-right: 1rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-  
-  h1 {
-    color: var(--color-text);
-    margin: 0;
-    height: 72px;
+html, body {
+    height: 100%;
+    width: 100%;
+}
+.field-todo{
+    height: 100%;
+    width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-  
-  #app-icon {
-    color: var(--color-text);
-    height: 72px;
-    font-size: 36px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
+    align-content: center;
+    padding: 50px;
+}
