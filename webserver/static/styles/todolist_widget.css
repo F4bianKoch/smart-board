@@ -7,7 +7,6 @@
 
 .title {
   color: var(--link-color);
-  padding-top: 1.5rem;
   padding-bottom: 8px;
   text-decoration: underline;
 }
@@ -18,18 +17,23 @@
   font-size: 20px;
 }
 
-.add{
+.list{
+  padding-top: 1.5rem;
+  height: 82%;
+}
+
+.symbol{
+  position: relative;
   display: inline-block;
   text-align: center;
   font-size: 20px;
   width: 35px;
   height: 35px;
-  margin-left: 85%;
+  margin-left: 86%;
   background-color: var(--main-color);
   border-radius: 17.5px;
 }
 
 .material-icons{
   padding-top: 5.5px;
-  padding-left: 0;
 }
