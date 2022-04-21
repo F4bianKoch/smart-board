@@ -144,7 +144,7 @@ class HomePageConsumer(WebsocketConsumer):
                     todos.update(todo)
 
                 content.update(todos_wrapper)
-                print(current_data)
+                
                 self.send(json.dumps(content))
 
             old_data = current_data
