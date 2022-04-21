@@ -38,7 +38,7 @@
   height: 35px;
   margin-left: 86%;
   background-color: var(--main-color);
-  border-radius: 17.5px;
+  border-radius: 50%;
 }
 
 .material-icons{
