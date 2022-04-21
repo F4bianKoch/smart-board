@@ -42,6 +42,7 @@ p {
 }
 
 .weather-sidebar {
+  width: 180px;
   position: absolute;
   padding-left: 2rem;
   padding-top: 1rem;
@@ -56,6 +57,16 @@ p {
   justify-content: space-between;
 }
 
-.weather-sidebar span {
+.location {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+#water_drop {
   color: var(--color);
+}
+
+#place {
+  color: red;
 }

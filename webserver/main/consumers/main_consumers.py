@@ -131,34 +131,20 @@ class HomePageConsumer(WebsocketConsumer):
         
         
         while True:
-            current_values = []
             # querry data
             current_data = ToDoList.objects.values('title').all()
-            current_data_date = ToDoList.objects.values('dueDate').all()
+            current_data = list(current_data)
             # send to websocket
             if current_data != old_data:
+                todos = {}
+                todos_wrapper = {'todos': todos}
                 # get single titles out of the dict
                 for i in range(len(current_data)):
-                    
-                    x = current_data[i]['title']
-                    current_values.append(x)
-                
-                data  = {'todos':
-                    {0: {
-                    'title': current_values[0], 'dueDate': '10.05.25'}
-                }
-                }
+                    todo = {i: {'title': current_data[i]}}
+                    todos.update(todo)
 
-                i = 1
-                for x in current_values:
-                    key = f"title{i}"
-                    dueDate = f"dueDate{i}"
-
-                    data['todos'][0][key] = x
-                    data['todos'][0][dueDate] = "10.05.25"
-                    i += 1
-                
-                content.update(data)
+                content.update(todos_wrapper)
+                print(current_data)
                 self.send(json.dumps(content))
 
             old_data = current_data

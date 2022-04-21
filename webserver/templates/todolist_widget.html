@@ -10,10 +10,10 @@
     <div class="todolist">
       <div class="list">
         <p class="title"> ToDo's</p>
-        <p class="todo one"><input type="checkbox"> Müll rausbringen</p>
-        <p class="todo two"><input type="checkbox"> Brief abgeben</p>
-        <p class="todo three"><input type="checkbox"> Fahrstunde</p>
-        <p class="todo four"><input type="checkbox"> Fahrstunde</p>
+        <p class="todo one"></p>
+        <p class="todo two"></p>
+        <p class="todo three"></p>
+        <p class="todo four"></p>
       </div>
       <div class="add"> 
         <a href="/todolist_app">
@@ -27,20 +27,46 @@
     <script>
       // updates todos if websocket sends new ones
       let old_todos = undefined;
-      function update_todo(djangoData) {
+      function update_todo(djangoData) 
+      {
         let todos = djangoData.todos;
-        let list = document.querySelector('.todolist');
-        if (JSON.stringify(todos) !== JSON.stringify(old_todos)){
-          // loops through list of todos and displays them on website
-          for (var key in todos){
-              let todo_div = document.createElement('div');
-              todo_div.innerText = todos[key]['dueDate'] + " " + todos[key]['title1']
-              + "\n" + todos[key]['dueDate'] + " " + todos[key]['title2']
-              + "\n" + todos[key]['dueDate'] + " " + todos[key]['title3']
-              + "\n" + todos[key]['dueDate'] + " " + todos[key]['title4'];;
-              list.append(todo_div);
+        if (JSON.stringify(todos) !== JSON.stringify(old_todos))
+        {
+          for (let i = 0; i < 4; i++)
+          {
+            try 
+            {
+              todo = todos[i]['title']['title'];
+              switch (i)
+              {
+                case 0:
+                  var p = document.getElementsByClassName("todo one");
+                  break;
+                case 1:
+                  var p = document.getElementsByClassName("todo two");
+                  break;
+                case 2:
+                  var p = document.getElementsByClassName("todo three");
+                  break;
+                case 3:
+                  var p = document.getElementsByClassName("todo four");
+                  break;
+                default:
+                  var p = document.getElementsByClassName("todo one");
+                  break;
+              }
+              var input = document.createElement("input");
+              input.type="checkbox";
+              p[0].append(input);
+              p[0].append(" ");
+              p[0].append(todo);
+            } catch (error)
+            {
               old_todos = todos;
+              break;
+            }
           }
+          old_todos = todos;
         }
       }
     </script>
