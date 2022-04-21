@@ -4,10 +4,12 @@
 <!DOCTYPE html>
 <html>
   <header>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/todo_app.css' %}" />
     <title>ToDoList</title>
   </header>
   <body>
-    <div>
+    <div class="'field_todo">
       <form action="" method="POST">
         {%csrf_token%}
         {{form.title}}
