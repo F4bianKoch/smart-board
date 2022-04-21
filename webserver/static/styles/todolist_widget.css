@@ -18,13 +18,19 @@
   font-size: 20px;
 }
 
-.list{
+.list {
   padding-top: 1.5rem;
   height: 82%;
 }
 
-.symbol{
+.add {
   position: relative;
+}
+
+.symbol {
+  position: absolute;
+  bottom: 17px;
+  right: 22px;
   display: inline-block;
   text-align: center;
   font-size: 20px;
