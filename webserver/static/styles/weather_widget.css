@@ -64,9 +64,9 @@ p {
 }
 
 #water_drop {
-  color: var(--color);
+  color: var(--link-color);
 }
 
 #place {
-  color: red;
+  color: var(--link-color);
 }
