@@ -1,8 +1,9 @@
 .todolist {
+  display: grid;
+  grid-template-rows: 83% 1fr;
   text-align: center;
   height: 100%;
   width: 100%;
-  
 }
 
 .title {
