@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { onActive } from 'react-idle-timer';
 import './App.css';
 import ClockComp from './components/clock';
 import DateComp from './components/date';
