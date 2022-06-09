@@ -31,7 +31,7 @@ function App() {
           </a>
         :
         <div className='Home'>
-          <p>HI</p>
+          <p>Home</p>
         </div>
       }
     </div>
