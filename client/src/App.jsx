@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { onActive } from 'react-idle-timer';
 import './App.css';
 import ClockComp from './components/clock';
 import DateComp from './components/date';
@@ -6,18 +7,33 @@ import DateComp from './components/date';
 
 function App() {
   const [today, setToday] = useState(new Date());
+  const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
 		setInterval(() => {
-			console.log('watching');
 			setToday(new Date());
 		}, 30);
 	}, []);
 
+  const isIdle = () => {
+
+  }
+
   return (
-    <div className="App">
-      <ClockComp today={today}/>
-      <DateComp today={today}/>
+    <div className='App'>
+      {
+        isActive === false ? 
+          <a onClick={() => {setIsActive(true);}}>
+            <div className='Screensaver'>
+              <ClockComp today={today}/>
+              <DateComp today={today}/>
+            </div>
+          </a>
+        :
+        <div className='Home'>
+          <p>HI</p>
+        </div>
+      }
     </div>
   );
 }
