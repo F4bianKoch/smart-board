@@ -1,8 +1,10 @@
 
 const DateComp = (props) => {
   const today = props.today;
-  const date = today.toLocaleString('de-DE', {
-    timeZone: 'Europe/Berlin',
+  const timeInfo = props.timeInfo;
+
+  const date = today.toLocaleString(timeInfo.timeDisplay, {
+    timeZone: timeInfo.timezone,
     day: '2-digit',
     month: '2-digit',
     year: 'numeric'

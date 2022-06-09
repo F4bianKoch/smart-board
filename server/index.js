@@ -6,7 +6,10 @@ const port = process.env.PORT || 5000;
 
 
 app.get('/api/timezone', (req, res) => {
-    res.json({"timezone": "de"});
+    res.json({
+        "timeDisplay": "de-DE",
+        "timezone": "Europe/Berlin"
+    });
 });
 
 app.listen(port, () => {

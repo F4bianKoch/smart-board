@@ -1,8 +1,10 @@
 
 const ClockComp = (props) => {
   const today = props.today;
-  const time = today.toLocaleString('de-DE', {
-    timeZone: 'Europe/Berlin',
+  const timeInfo = props.timeInfo;
+
+  const time = today.toLocaleString(timeInfo.timeDisplay, {
+    timeZone: timeInfo.timezone,
     hour: 'numeric',
     minute: 'numeric',
     second: 'numeric'
