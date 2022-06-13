@@ -1,0 +1,20 @@
+.sidebar {
+  color: white;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  position: fixed;
+  height: inherit;
+  width: 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background-color: #222831;
+  z-index: 1;
+}
+
+.sidebar span {
+  font-size: 36px;
+}

@@ -3,6 +3,7 @@ import axios from 'axios';
 import './App.css';
 import ClockComp from './components/clock';
 import DateComp from './components/date';
+import Navbar from './components/navbar';
 
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
     <div className='App'>
       {
         isActive === false ? 
-          <a onClick={() => {setIsActive(true);}}>
+          <a className='mainLink' onClick={() => {setIsActive(true);}}>
             <div className='Screensaver'>
               <ClockComp today={today} timeInfo={timeInfo}/>
               <DateComp today={today} timeInfo={timeInfo}/>
@@ -29,7 +30,7 @@ function App() {
           </a>
         :
         <div className='Home'>
-          <p>Home</p>
+          <Navbar />
         </div>
       }
     </div>
