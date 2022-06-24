@@ -4,6 +4,7 @@ import './App.css';
 import ClockComp from './components/clock';
 import DateComp from './components/date';
 import Navbar from './components/navbar';
+import Topbar from './components/topbar';
 
 
 function App() {
@@ -24,13 +25,16 @@ function App() {
         isActive === false ? 
           <a className='mainLink' onClick={() => {setIsActive(true);}}>
             <div className='Screensaver'>
-              <ClockComp today={today} timeInfo={timeInfo}/>
-              <DateComp today={today} timeInfo={timeInfo}/>
+              <ClockComp today={today} timeInfo={timeInfo} page={0}/>
+              <DateComp today={today} timeInfo={timeInfo} page={0}/>
             </div>
           </a>
         :
         <div className='Home'>
           <Navbar />
+          <div className="main-part">
+            <Topbar className="time" today={today} timeInfo={timeInfo} page={1}/>
+          </div>
         </div>
       }
     </div>
