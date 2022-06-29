@@ -20,6 +20,14 @@ function App() {
 		}, 30);
 	}, []);
 
+  const currentTheme = localStorage.getItem("theme")
+      ? localStorage.getItem("theme")
+      : null;
+
+  if (currentTheme) {
+    document.documentElement.setAttribute("data-theme", currentTheme);
+  }
+
   return (
     <div className='App'>
       {

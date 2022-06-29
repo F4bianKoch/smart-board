@@ -10,8 +10,8 @@
 [data-theme="light"] {
   --color: #0090ff;
   --color-text: black;
-  --background: rgb(223, 240, 255);
-  --main-color: white;
+  --background: white;
+  --main-color: rgb(223, 240, 255);
   --link-color: #0090ff;
   --shadow-color: rgba(29, 30, 36, 0.726);
 }

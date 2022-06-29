@@ -17,4 +17,5 @@
 
 .sidebar span {
   font-size: 36px;
+  color: var(--link-color);
 }
