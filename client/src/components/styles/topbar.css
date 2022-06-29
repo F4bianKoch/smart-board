@@ -7,7 +7,7 @@
 .time {
   margin: 0;
   height: 64px;
-  color: #0090ff;
+  color: var(--color);
   font-size: 50px;
   font-weight: 550;
   position: absolute;
@@ -17,7 +17,7 @@
 
 .date-home {
   margin: 0;
-  color: #0090ff;
+  color: var(--color);
   font-size: 25px;
   font-weight: 550;
   position: absolute;

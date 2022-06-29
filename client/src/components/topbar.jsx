@@ -1,4 +1,4 @@
-import './topbar.css';
+import './styles/topbar.css';
 import ClockComp from './clock';
 import DateComp from './date';
 

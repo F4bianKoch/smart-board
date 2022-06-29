@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './themes.css';
 import './App.css';
 import ClockComp from './components/clock';
 import DateComp from './components/date';

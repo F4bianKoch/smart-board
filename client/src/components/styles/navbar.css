@@ -11,7 +11,7 @@
   justify-content: space-evenly;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
-  background-color: #222831;
+  background-color: var(--main-color);
   z-index: 1;
 }
 

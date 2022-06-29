@@ -16,12 +16,12 @@ html, body , #root{
   height: 100%;
   width: 100%;
   text-align: center;
-  background-color: #222831; 
+  background-color: var(--main-color); 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #00adb5;
+  color: var(--link-color);
   user-select: none;
    -webkit-user-select: none;
    -khtml-user-select: none;
@@ -32,6 +32,7 @@ html, body , #root{
 .Home {
   height: 100%;
   width: 100%;
+  background-color: var(--background);
   display: flex;
   flex-direction: row;
   user-select: none;
