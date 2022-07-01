@@ -1,7 +1,8 @@
 import './styles/navbar.css';
 
 
-const Navbar = () => {
+const Navbar = (props) => {
+
   return (
     <div className="sidebar">
       <a className="home">
@@ -10,8 +11,8 @@ const Navbar = () => {
       <a className="apps">
         <span className="material-icons-outlined">widgets</span>
       </a>
-      <a className="settings">
-        <span className="material-icons">tune</span>
+      <a onClick={() => {props.setIsActive(false)}}>
+        <span class="material-icons-outlined">bedtime</span>
       </a>
     </div>
   );

@@ -32,7 +32,7 @@ function App() {
     <div className='App'>
       {
         isActive === false ? 
-          <a className='mainLink' onClick={() => {setIsActive(true);}}>
+          <a className='mainLink' onClick={() => {setIsActive(true)}}>
             <div className='Screensaver'>
               <ClockComp today={today} timeInfo={timeInfo} page={0}/>
               <DateComp today={today} timeInfo={timeInfo} page={0}/>
@@ -40,7 +40,7 @@ function App() {
           </a>
         :
         <div className='Home'>
-          <Navbar />
+          <Navbar setIsActive={setIsActive}/>
           <div className="main-part">
             <Topbar className="time" today={today} timeInfo={timeInfo} page={1}/>
           </div>
