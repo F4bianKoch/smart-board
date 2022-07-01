@@ -2,6 +2,7 @@
   width: 100%;
   height: 64px;
   position: relative;
+  flex-shrink: 0;
 }
 
 .time {

@@ -6,6 +6,7 @@ import ClockComp from './components/clock';
 import DateComp from './components/date';
 import Navbar from './components/navbar';
 import Topbar from './components/topbar';
+import WidgetGrid from './components/widgetGrid';
 
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
           <Navbar setIsActive={setIsActive}/>
           <div className="main-part">
             <Topbar className="time" today={today} timeInfo={timeInfo} page={1}/>
+            <WidgetGrid />
           </div>
         </div>
       }
