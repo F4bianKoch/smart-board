@@ -1,0 +1,27 @@
+{
+  "name": "smart-board",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./server/index.js",
+    "dev": "concurrently \"nodemon start ./server/index.js\" \"cd client && npm start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ferocide001/smart-board.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ferocide001/smart-board/issues"
+  },
+  "homepage": "https://github.com/ferocide001/smart-board#readme",
+  "description": "",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "concurrently": "^7.2.1",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1"
+  }
+}

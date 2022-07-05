@@ -1,0 +1,17 @@
+:root {
+  --color: white;
+  --color-text: white;
+  --background: #393e46;
+  --main-color: #222831;
+  --link-color: #00fff5;
+  --shadow-color: rgba(29, 30, 36, 0.726);
+}
+
+[data-theme="light"] {
+  --color: #0090ff;
+  --color-text: black;
+  --background: white;
+  --main-color: rgb(223, 240, 255);
+  --link-color: #0090ff;
+  --shadow-color: rgba(29, 30, 36, 0.726);
+}

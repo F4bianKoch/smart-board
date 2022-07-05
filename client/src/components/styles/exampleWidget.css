@@ -1,0 +1,12 @@
+.example-widget {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border-radius: 25px;
+}
+
+.text {
+  color: var(--color);
+  text-align: center;
+}
