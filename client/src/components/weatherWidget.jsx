@@ -1,35 +1,53 @@
 import { useState } from 'react';
+import { useEffect } from 'react';
+import axios from 'axios';
 import './styles/weatherWidget.css';
 
 
 const WeatherWidget = () => {
-    const [temp, setTemp] = useState();
-    const [img, setImg] = useState();
-    const [text, setText] = useState();
-    const [hm, setHm] = useState();
-    const [location, setLocation] = useState();
+    const [weatherData, setWeatherData] = useState();
+    const [fetchCompleted, setFetchCompleted] = useState(false);
+
+    useEffect(() => {
+        axios.get('/api/weather').then((response) => {
+            if (Object.keys(response.data).length !== 0) {
+                setWeatherData(response.data);
+                setFetchCompleted(true);
+            }
+        });
+    }, []);
+
 
     return (
         <div className='weather-widget'>
-            <div class="weather">
-            <div class="temp-display">
-                <div class="current-weather">
-                <img class="icon" />
-                <p class="temperature"></p>
-                <p class="weather-text"></p>
+            {
+                fetchCompleted === false ?
+                    <div className="weather">
+                        <div className="temp-display">
+                            <p className="temperature">N/A</p>
+                        </div>
+                    </div>
+                :
+                <div className="weather">
+                <div className="temp-display">
+                    <div className="current-weather">
+                    <img className="icon" src={weatherData.img}/>
+                    <p className="temperature">{weatherData.temp} °C</p>
+                    <p className="weather-text">{weatherData.text}</p>
+                    </div>
                 </div>
-            </div>
-            <div class="weather-sidebar">
-                <div class="humidity-wrapper">
-                <span class="material-icons-outlined" id="water_drop">water_drop</span>
-                <p class="humidity"></p>
+                <div className="weather-sidebar">
+                    <div className="humidity-wrapper">
+                    <span className="material-icons-outlined" id="water_drop">water_drop</span>
+                    <p className="humidity">{weatherData.hm} %</p>
+                    </div>
+                    <div className="location-wrapper">
+                    <span className="material-icons-outlined" id="place">place</span>
+                    <p className="location">{weatherData.location}</p>
+                    </div>
                 </div>
-                <div class="location-wrapper">
-                <span class="material-icons-outlined" id="place">place</span>
-                <p class="location"></p>
                 </div>
-            </div>
-            </div>
+            }
         </div>
     )
 }
