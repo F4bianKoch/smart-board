@@ -34,7 +34,7 @@ const Topbar = (props) => {
             type="checkbox" 
             id="checkbox" 
             checked={currentTheme === "light" ? true : false} 
-            onClick={switchTheme}
+            onChange={switchTheme}
           />
           <div className="slider round"></div>
         </label>
