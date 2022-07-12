@@ -12,7 +12,7 @@ const Navbar = (props) => {
         <span className="material-icons-outlined">widgets</span>
       </a>
       <a onClick={() => {props.setIsActive(false)}}>
-        <span class="material-icons-outlined">bedtime</span>
+        <span className="material-icons-outlined">bedtime</span>
       </a>
     </div>
   );
