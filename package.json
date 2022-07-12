@@ -2,6 +2,7 @@
   "name": "smart-board",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "node ./server/index.js",
     "dev": "concurrently \"nodemon start ./server/index.js\" \"cd client && npm start\""
@@ -22,6 +23,7 @@
     "axios": "^0.27.2",
     "concurrently": "^7.2.1",
     "dotenv": "^16.0.1",
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "node-fetch": "^3.2.6"
   }
 }
