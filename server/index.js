@@ -1,20 +1,36 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import axios from 'axios';
+import cors from 'cors';
+import pg from 'pg';
 
-dotenv.config();
 const app = express();
+const Client = pg.Client;
 const port = process.env.PORT || 5000;
 
-app.get('/api/timezone', (req, res) => {
+dotenv.config();
+app.use(cors());
+
+const db = new Client();
+await db.connect();
+
+
+app.get('/api/timezone', async (req, res) => {
+
+    const data = await db.query("Select * from userinformation where name='timezone' or name='timeDisplay'");
+
     res.json({
-        "timeDisplay": "de-DE",
-        "timezone": "Europe/Berlin"
+        "timeDisplay": data.rows[1].string,
+        "timezone": data.rows[0].string
     });
 });
 
-app.get('/api/weather', (req, res) => {
-    axios.get('https://api.weatherapi.com/v1/forecast.json?key=fad39e5cfa4e4247bfb161147221603&lang=de&q=Erding&days=2')
+app.get('/api/weather', async (req, res) => {
+
+    const data = await db.query("Select * from userinformation where name='weather_api_key' or name='location'");
+    const url = `https://api.weatherapi.com/v1/forecast.json?key=${data.rows[1].string}&lang=de&q=${data.rows[0].string}&days=2`; 
+
+    axios.get(url)
     .then((response) => {
         const weatherData = response.data;
 
@@ -36,7 +52,8 @@ app.get('/api/weather', (req, res) => {
                 "weatherData": "N/A"
             })
         }
-    });
+    })
+    .catch((err) => { console.log('weather api failed') });
 })
 
 app.listen(port, () => {
