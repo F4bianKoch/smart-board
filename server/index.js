@@ -28,7 +28,7 @@ app.get('/api/timezone', async (req, res) => {
 app.get('/api/weather', async (req, res) => {
 
     const data = await db.query("Select * from userinformation where name='weather_api_key' or name='location'");
-    const url = `https://api.weatherapi.com/v1/forecast.json?key=${data.rows[1].string}&lang=de&q=${data.rows[0].string}&days=2`; 
+    const url = `https://api.weatherapi.com/v1/forecast.json?key=${data.rows[0].string}&lang=de&q=${data.rows[1].string}&days=2`; 
 
     axios.get(url)
     .then((response) => {
@@ -53,7 +53,7 @@ app.get('/api/weather', async (req, res) => {
             })
         }
     })
-    .catch((err) => { console.log('weather api failed') });
+    .catch((err) => { console.log('weather api failed: ', err) });
 })
 
 app.listen(port, () => {
