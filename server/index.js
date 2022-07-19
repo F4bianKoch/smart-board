@@ -4,6 +4,7 @@ import axios from 'axios';
 import cors from 'cors';
 import pg from 'pg';
 
+
 const app = express();
 const Client = pg.Client;
 const port = process.env.PORT || 5000;
@@ -11,14 +12,17 @@ const port = process.env.PORT || 5000;
 dotenv.config();
 app.use(cors());
 
+
 const db = new Client();
-await db.connect();
+try {
+    await db.connect();
+}catch (error) {
+}
 
 
 app.get('/api/timezone', async (req, res) => {
 
     const data = await db.query("Select * from userinformation where name='timezone' or name='timeDisplay'");
-
     res.json({
         "timeDisplay": data.rows[1].string,
         "timezone": data.rows[0].string
