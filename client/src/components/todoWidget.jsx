@@ -10,8 +10,17 @@ const TodoWidget = () => {
 
     useEffect(() => {
         axios.get('/api/todo_list').then((response) => {
-            if (Object.keys(response.data).length !== 0) {
-                setTasks(response.data);
+            if (Object.keys(response.data).length !== 0) { 
+                var counter = 0
+                const list = []
+                    
+                for (let i = 0; i < Object.keys(response.data).length; i++) {
+                    var entry = response.data[counter].todo
+                    list[counter] = entry
+                    counter++
+                }
+
+                setTasks(list);
                 setFetchCompleted(true);
             }
         });
@@ -27,15 +36,12 @@ const TodoWidget = () => {
                         </div>
                     </div>
                 :
-                <div className="weather">
-                <div className="temp-display">
-                    <div className="current-weather">
-                    <p className="task">{tasks.tasks}</p>
-                    </div>
-                </div>
-                <div className="weather-sidebar">
+                <div className="tasks">
+                    <p className="task1">{tasks[0]}</p>
+                    <p className="task2">{tasks[1]}</p>
+                    <p className="task3">{tasks[2]}</p>
+                    <p className="task4">{tasks[3]}</p>
 
-                </div>
                 </div>
             }
         </div>
