@@ -60,7 +60,7 @@ app.get('/api/weather', async (req, res) => {
 app.get('/api/todo_list', async (req, res) => {
 
     const tasks = await db.query("Select task from todo_list");
-    const dict = {}
+    const dict = []
     var counter = 0
     
     for (let i = 0; i < tasks.rows.length; i++) {
@@ -70,6 +70,8 @@ app.get('/api/todo_list', async (req, res) => {
         counter++
         
     }
+    
+
     res.json(dict);
 })
 
