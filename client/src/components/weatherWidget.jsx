@@ -31,7 +31,7 @@ const WeatherWidget = () => {
                 <div className="weather">
                 <div className="temp-display">
                     <div className="current-weather">
-                    <img className="icon" src={weatherData.img}/>
+                    <img className="icon" src={weatherData.img} alt="Sun"/>
                     <p className="temperature">{weatherData.temp} °C</p>
                     <p className="weather-text">{weatherData.text}</p>
                     </div>
