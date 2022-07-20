@@ -55,15 +55,23 @@ app.get('/api/weather', async (req, res) => {
 
 })
 
+
+
 app.get('/api/todo_list', async (req, res) => {
 
-    const tasks = await db.query("Select string from userinformation");
+    const tasks = await db.query("Select task from todo_list");
+    const dict = {}
+    var counter = 0
     
-    for (let x = tasks.rows.length; x > 0; x++)
-        res.json({
-            "tasks": tasks.rows[3].string,
-        });
-    });
+    for (let i = 0; i < tasks.rows.length; i++) {
+        var todo = tasks.rows[counter].task
+        var entry = {todo}
+        dict[counter] = entry
+        counter++
+        
+    }
+    res.json(dict);
+})
 
 app.listen(port, () => {
     console.log(`Server running at 127.0.0.0:${port}`);
