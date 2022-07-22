@@ -11,7 +11,7 @@ const Navbar = (props) => {
       <a className="apps" href='/#Apps'>
         <span className="material-icons-outlined">widgets</span>
       </a>
-      <a onClick={() => {props.setIsActive(false)}}>
+      <a onClick={() => {props.setIsActive(false)}} href='/#' >
         <span className="material-icons-outlined">bedtime</span>
       </a>
     </div>
