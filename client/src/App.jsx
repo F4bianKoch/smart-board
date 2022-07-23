@@ -16,9 +16,21 @@ function App() {
   const [timeInfo, setTimeInfo] = useState({});
 
   useEffect(() => {
+    console.log('use effect');
     axios.get('/api/timezone').then((response) => setTimeInfo(response.data));
 
+    let idleTimeout;
+    const resetIdleTimeout = () => {
+      if (idleTimeout) {
+        clearTimeout(idleTimeout);
+      }
+      idleTimeout = setTimeout(() => {
+        setIsActive(false);
+        clearTimeout(idleTimeout);
+      }, 60000);
+    };
     resetIdleTimeout();
+
     ["click", "touchstart", "mousemove"].forEach((evt) =>
     document.addEventListener(evt, resetIdleTimeout, false));
 
@@ -27,16 +39,6 @@ function App() {
 		}, 30);
 	}, []);
   
-  const resetIdleTimeout = () => {
-    let idleTimeout;
-    if (idleTimeout) {
-      clearTimeout(idleTimeout);
-    }
-    idleTimeout = setTimeout(() => {
-      setIsActive(false);
-    }, 60000);
-  };
-
   const currentTheme = localStorage.getItem("theme")
       ? localStorage.getItem("theme")
       : null;
