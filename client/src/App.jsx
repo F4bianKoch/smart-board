@@ -17,10 +17,25 @@ function App() {
 
   useEffect(() => {
     axios.get('/api/timezone').then((response) => setTimeInfo(response.data));
+
+    resetIdleTimeout();
+    ["click", "touchstart", "mousemove"].forEach((evt) =>
+    document.addEventListener(evt, resetIdleTimeout, false));
+
 		setInterval(() => {
 			setToday(new Date());
 		}, 30);
 	}, []);
+  
+  const resetIdleTimeout = () => {
+    let idleTimeout;
+    if (idleTimeout) {
+      clearTimeout(idleTimeout);
+    }
+    idleTimeout = setTimeout(() => {
+      setIsActive(false);
+    }, 60000);
+  };
 
   const currentTheme = localStorage.getItem("theme")
       ? localStorage.getItem("theme")
