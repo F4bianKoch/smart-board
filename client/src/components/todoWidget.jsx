@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
-import './styles/weatherWidget.css';
+import './styles/todoWidget.css';
 
 
 const TodoWidget = () => {
@@ -11,16 +11,7 @@ const TodoWidget = () => {
     useEffect(() => {
         axios.get('/api/todo_list').then((response) => {
             if (Object.keys(response.data).length !== 0) { 
-                var counter = 0
-                const list = []
-                    
-                for (let i = 0; i < Object.keys(response.data).length; i++) {
-                    var entry = response.data[counter].todo
-                    list[counter] = entry
-                    counter++
-                }
-
-                setTasks(list);
+                setTasks(response.data);
                 setFetchCompleted(true);
             }
         });
@@ -36,12 +27,16 @@ const TodoWidget = () => {
                         </div>
                     </div>
                 :
-                <div className="tasks">
-                    <p className="task1">{tasks[0]}</p>
-                    <p className="task2">{tasks[1]}</p>
-                    <p className="task3">{tasks[2]}</p>
-                    <p className="task4">{tasks[3]}</p>
-
+                <div className="todo-list">
+                    <p className="headline">ToDo's:</p>
+                    <div className="tasks">
+                        { tasks.map(task => (
+                            <div className="task">
+                                <p className="name">{task.todo}</p>
+                                <input type="checkbox" className="checkbox" />
+                            </div>
+                        ))}
+                    </div>
                 </div>
             }
         </div>
