@@ -1,6 +1,6 @@
 :root {
-  --color: white;
-  --color-text: white;
+  --color: rgb(220, 220, 220);
+  --color-text: #00fff5;
   --background: #393e46;
   --main-color: #222831;
   --link-color: #00fff5;
@@ -8,8 +8,8 @@
 }
 
 [data-theme="light"] {
-  --color: #0090ff;
-  --color-text: black;
+  --color: rgb(103, 103, 103);
+  --color-text: #0090ff;
   --background: white;
   --main-color: rgb(223, 240, 255);
   --link-color: #0090ff;

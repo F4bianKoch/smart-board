@@ -39,6 +39,7 @@ p {
   top: 10px;
   font-size: 55px;
   font-weight: 600;
+  color: var(--color);
 }
 
 .weather-text {
