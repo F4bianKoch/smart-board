@@ -1,47 +1,43 @@
 .todo_list-widget {
-    height: 100%;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    border-radius: 25px;
-}
-
-p {
-    margin: 0;
-    color: var(--color);
-    font-size: 25px;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border-radius: 25px;
+  color: var(--color);
+  font-size: 25px;
 }
 
 .todo-list {
-    height: 90%;
-    padding: 1.0rem;
-    padding-left: 1.4rem;
-    display: flex;
-    flex-direction: column;
-    position: relative;
+  height: 90%;
+  padding: 1.0rem;
+  padding-left: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
 .headline {
-    font-size: 30px;
-    font-weight: 500;
-    color: var(--color-text);
-    text-decoration: underline;
+  font-size: 30px;
+  font-weight: 500;
+  color: var(--color-text);
+  text-decoration: underline;
 }
 
 .tasks {
-    display: flex;
-    margin-top: 0.5rem;
-    margin-left: 0.8rem;
-    margin-right: 1rem;
-    flex-direction: column;
+  display: flex;
+  margin-top: 0.5rem;
+  margin-left: 0.8rem;
+  margin-right: 1rem;
+  flex-direction: column;
 }
 
 .task {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .name {
-    font-size: 20px;
+  font-size: 20px;
 }
