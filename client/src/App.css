@@ -22,7 +22,7 @@ html, body , #root{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: var(--link-color);
+  color: var(--color-text);
   user-select: none;
    -webkit-user-select: none;
    -khtml-user-select: none;

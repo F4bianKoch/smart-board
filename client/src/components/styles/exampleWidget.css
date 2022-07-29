@@ -4,6 +4,8 @@
   padding: 0;
   margin: 0;
   border-radius: 25px;
+  color: var(--color);
+  font-size: 25px;
 }
 
 .text {
