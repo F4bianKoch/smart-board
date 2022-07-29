@@ -3,8 +3,9 @@
   --color-text: #00fff5;
   --background: #393e46;
   --main-color: #222831;
-  --link-color: #00fff5;
+  --link-color: rgb(169, 215, 255);
   --shadow-color: rgba(29, 30, 36, 0.726);
+  --border-color: #222831;
 }
 
 [data-theme="light"] {
@@ -14,4 +15,5 @@
   --main-color: rgb(223, 240, 255);
   --link-color: #0090ff;
   --shadow-color: rgba(29, 30, 36, 0.726);
+  --border-color: rgb(223, 240, 255);
 }

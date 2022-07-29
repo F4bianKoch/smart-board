@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './themes.css';
-import './App.css';
+
 import ClockComp from './components/clock';
 import DateComp from './components/date';
 import Navbar from './components/navbar';
 import Topbar from './components/topbar';
 import WidgetGrid from './components/widgetGrid';
+import './themes.css';
+import './App.css';
 
 
 function App() {
@@ -15,12 +16,29 @@ function App() {
   const [timeInfo, setTimeInfo] = useState({});
 
   useEffect(() => {
+    console.log('use effect');
     axios.get('/api/timezone').then((response) => setTimeInfo(response.data));
+
+    let idleTimeout;
+    const resetIdleTimeout = () => {
+      if (idleTimeout) {
+        clearTimeout(idleTimeout);
+      }
+      idleTimeout = setTimeout(() => {
+        setIsActive(false);
+        clearTimeout(idleTimeout);
+      }, 60000);
+    };
+    resetIdleTimeout();
+
+    ["click", "touchstart", "mousemove"].forEach((evt) =>
+    document.addEventListener(evt, resetIdleTimeout, false));
+
 		setInterval(() => {
 			setToday(new Date());
 		}, 30);
 	}, []);
-
+  
   const currentTheme = localStorage.getItem("theme")
       ? localStorage.getItem("theme")
       : null;
@@ -40,13 +58,16 @@ function App() {
             </div>
           </a>
         :
-        <div className='Home'>
-          <Navbar setIsActive={setIsActive}/>
-          <div className="main-part">
-            <Topbar className="time" today={today} timeInfo={timeInfo} page={1}/>
-            <WidgetGrid />
+        <React.Fragment>
+          <div id='Home'>
+            <Navbar setIsActive={setIsActive}/>
+            <div className="main-part">
+              <Topbar className="time" today={today} timeInfo={timeInfo} page={1}/>
+              <WidgetGrid />
+            </div>
           </div>
-        </div>
+          <div id="Apps"></div>
+        </React.Fragment>
       }
     </div>
   );
