@@ -53,19 +53,19 @@ function App() {
     <div className='App'>
       {
         isActive === false ? 
-          <a className='mainLink' onClick={() => {setIsActive(true)}}>
-            {
-              timeInfo === 1 ?
-              <div className='Screensaver'>
+        <div className="Screensaver">
+          {
+            timeInfo === 1 ?
                 <h1>Database kann nicht erreicht werden!</h1>
-              </div>
-              :
-              <div className='Screensaver'>
-                  <ClockComp today={today} timeInfo={timeInfo} page={0}/>
-                  <DateComp today={today} timeInfo={timeInfo} page={0}/>
-              </div>
-            }
-          </a>
+            :
+              <a className='mainLink' onClick={() => {setIsActive(true)}}>
+                <div className='Screensaver'>
+                    <ClockComp today={today} timeInfo={timeInfo} page={0}/>
+                    <DateComp today={today} timeInfo={timeInfo} page={0}/>
+                </div>
+              </a>
+          }
+        </div>
         :
         <React.Fragment>
           <div id='Home'>
