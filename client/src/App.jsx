@@ -16,8 +16,10 @@ function App() {
   const [timeInfo, setTimeInfo] = useState({});
 
   useEffect(() => {
-    console.log('use effect');
-    axios.get('/api/timezone').then((response) => setTimeInfo(response.data));
+    axios.get('/api/timezone').then((response) => setTimeInfo(response.data))
+      .catch((error) => {
+        setTimeInfo(1);
+      });
 
     let idleTimeout;
     const resetIdleTimeout = () => {
@@ -52,10 +54,17 @@ function App() {
       {
         isActive === false ? 
           <a className='mainLink' onClick={() => {setIsActive(true)}}>
-            <div className='Screensaver'>
-              <ClockComp today={today} timeInfo={timeInfo} page={0}/>
-              <DateComp today={today} timeInfo={timeInfo} page={0}/>
-            </div>
+            {
+              timeInfo === 1 ?
+              <div className='Screensaver'>
+                <h1>Database kann nicht erreicht werden!</h1>
+              </div>
+              :
+              <div className='Screensaver'>
+                  <ClockComp today={today} timeInfo={timeInfo} page={0}/>
+                  <DateComp today={today} timeInfo={timeInfo} page={0}/>
+              </div>
+            }
           </a>
         :
         <React.Fragment>

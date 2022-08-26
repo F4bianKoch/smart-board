@@ -55,6 +55,12 @@ app.get('/api/weather', async (req, res) => {
 
 })
 
-app.listen(port, () => {
-    console.log(`Server running at 127.0.0.0:${port}`);
-})
+try{
+    await db.query('Select * from userinformation');
+
+    app.listen(port, () => {
+        console.log(`Server running at 127.0.0.0:${port}`);
+    })
+}catch(error){
+    console.log('Database can\'t be reached!'); 
+}
