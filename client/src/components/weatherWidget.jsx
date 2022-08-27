@@ -12,7 +12,9 @@ const WeatherWidget = () => {
         axios.get('/api/weather').then((response) => {
             if (Object.keys(response.data).length !== 0) {
                 setWeatherData(response.data);
-                setFetchCompleted(true);
+                if (Object.keys(response.data).length !== 1) {
+                    setFetchCompleted(true);
+                }
             }
         });
     }, []);

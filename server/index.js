@@ -33,30 +33,41 @@ app.get('/api/timezone', async (req, res) => {
 
 app.get('/api/weather', async (req, res) => {
 
-    const api_key = await db.query("Select * from userinformation where name='weather_api_key'");
-    const location = await db.query("Select * from userinformation where name='location'");
+    try{
 
-    const url = `https://api.weatherapi.com/v1/forecast.json?key=${api_key.rows[0].string}&lang=de&q=${location.rows[0].string}&days=2`; 
+        const api_key = await db.query("Select * from userinformation where name='weather_api_key'");
+        const location = await db.query("Select * from userinformation where name='location'");
 
-    axios.get(url)
-    .then((response) => {
-        const weatherData = response.data;
+        const url = `https://api.weatherapi.com/v1/forecast.json?key=${api_key.rows[0].string}&lang=de&q=${location.rows[0].string}&days=2`; 
 
-        if (weatherData != undefined) {
-            res.json({
-                "temp": weatherData.current.temp_c,
-                "img": weatherData.current.condition.icon,
-                "text": weatherData.current.condition.text,
-                "hm": weatherData.current.humidity,
-                "location": weatherData.location.name + ", " + weatherData.location.region,
-            })
-        }
-    }).catch((err) => { console.log('weather api failed') });
+        axios.get(url)
+        .then((response) => {
+            const weatherData = response.data;
+
+            if (weatherData != undefined) {
+                res.json({
+                    "temp": weatherData.current.temp_c,
+                    "img": weatherData.current.condition.icon,
+                    "text": weatherData.current.condition.text,
+                    "hm": weatherData.current.humidity,
+                    "location": weatherData.location.name + ", " + weatherData.location.region,
+                })
+            }
+        }).catch((err) => { console.log('weather api failed') });
+
+    }catch(err){
+        res.json({
+            "temp": "N/A"
+        });
+        console.log('Weather API Error: ' + err);
+    }
+
 
 })
 
 try{
-    await db.query('Select * from userinformation');
+    await db.query("Select * from userinformation where name='timezone'");
+    await db.query("Select * from userinformation where name='timeDisplay'");
 
     app.listen(port, () => {
         console.log(`Server running at 127.0.0.0:${port}`);
