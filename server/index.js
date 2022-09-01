@@ -73,5 +73,5 @@ try{
         console.log(`Server running at 127.0.0.0:${port}`);
     })
 }catch(error){
-    console.log('Database can\'t be reached!'); 
+    console.log('Database can\'t be reached!' + error); 
 }
